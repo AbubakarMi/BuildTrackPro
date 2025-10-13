@@ -81,7 +81,7 @@ export function MainSidebar() {
           ))}
         </SidebarMenu>
       </SidebarContent>
-      <SidebarFooter className="group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-1 flex-col items-start p-2 gap-2">
+      <SidebarFooter className="group-data-[collapsible=icon]:justify-center flex-col items-start p-2 gap-2">
         <SidebarMenu>
             <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Settings">
@@ -93,7 +93,7 @@ export function MainSidebar() {
             </SidebarMenuItem>
         </SidebarMenu>
         <div className="text-center w-full text-xs text-muted-foreground px-2 group-data-[collapsible=icon]:hidden">
-          <Link href="#" className="hover:text-primary transition-colors">Powered by Nubenta</Link>
+          <p className='text-xs text-accent-foreground/80'>Powered by Nubenta</p>
         </div>
       </SidebarFooter>
     </>

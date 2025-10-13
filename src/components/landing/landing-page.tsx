@@ -1,6 +1,7 @@
 
 
 
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -313,9 +314,9 @@ export default function LandingPage() {
                     <HardHat className="w-7 h-7" />
                     <span>BuildTrack Pro</span>
                 </Link>
-                <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} A Nubenta Technology Limited Company. All Rights Reserved. </p>
+                <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
                 <p className="text-sm text-accent-foreground/80">
-                  <Link href="#" className="transition-colors hover:text-primary">Powered by Nubenta</Link>
+                  Powered by Nubenta Technology Limited
                 </p>
             </div>
             <div>
