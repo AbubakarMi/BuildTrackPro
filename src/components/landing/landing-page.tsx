@@ -43,8 +43,8 @@ export default function LandingPage() {
           <span>BuildTrack Pro</span>
         </Link>
         <nav className="hidden md:flex gap-6">
-          <Link href="#services" className="text-lg font-medium hover:text-primary transition-colors">Services</Link>
-          <Link href="#projects" className="text-lg font-medium hover:text-primary transition-colors">Projects</Link>
+          <Link href="#services" className="text-lg font-medium hover:text-primary transition-colors">Features</Link>
+          <Link href="#projects" className="text-lg font-medium hover:text-primary transition-colors">Use Cases</Link>
           <Link href="#about" className="text-lg font-medium hover:text-primary transition-colors">About</Link>
           <Link href="#contact" className="text-lg font-medium hover:text-primary transition-colors">Contact</Link>
         </nav>
@@ -69,13 +69,13 @@ export default function LandingPage() {
           <div className="relative h-full flex flex-col items-center justify-center text-center text-white px-4">
             <div className="bg-black/50 p-8 rounded-lg">
                 <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">
-                    Take Control of Your Construction Costs
+                    Streamline Your Construction Project Management
                 </h1>
                 <p className="text-lg md:text-2xl max-w-3xl mx-auto mb-8">
-                    Stop losing money on untracked expenses. Track material usage, worker payments, and forecast your budget with precision.
+                    The all-in-one platform for constructors. Track expenses, manage materials, and control labor costs with ease.
                 </p>
                 <Button size="lg" asChild>
-                    <Link href="#contact">Request a Quote</Link>
+                    <Link href="/login">Sign Up for Free</Link>
                 </Button>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function LandingPage() {
 
         <section id="services" className="py-16 md:py-24 bg-secondary">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">Features for Constructors</h2>
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">A Better Way to Manage Your Projects</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {services.map((service, index) => (
                 <Card key={index} className="text-center">
@@ -102,7 +102,7 @@ export default function LandingPage() {
 
         <section id="projects" className="py-16 md:py-24">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">Recent Projects</h2>
+                <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">Built for Any Project</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {projectImages.map((img, index) => img && (
                         <Card key={img.id} className="overflow-hidden group">
@@ -130,10 +130,10 @@ export default function LandingPage() {
             <div>
               <h2 className="text-3xl md:text-4xl font-headline font-bold mb-6">About BuildTrack Pro</h2>
               <p className="text-muted-foreground text-lg mb-4">
-                With over 20 years of experience in the construction industry, we have a proven track record of delivering high-quality projects on time and on budget. Our team of experts is dedicated to excellence and client satisfaction.
+                BuildTrack Pro was created by a team of construction and software experts who saw the need for a simple, powerful tool to manage project finances. We're dedicated to helping constructors save money and build more efficiently.
               </p>
               <p className="text-muted-foreground text-lg">
-                We believe in building strong relationships with our clients, based on trust, transparency, and communication. Let us bring our expertise to your next project.
+                Our mission is to provide an intuitive platform that gives you complete control over your project's budget, materials, and labor costs.
               </p>
             </div>
             {PlaceHolderImages.find(i => i.id === 'project-image-1') && 
@@ -152,15 +152,15 @@ export default function LandingPage() {
 
         <section id="contact" className="py-16 md:py-24">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">Get in Touch</h2>
+                <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">Contact Us</h2>
                 <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
                     <div>
-                        <h3 className="text-2xl font-bold mb-4">Request a Quote</h3>
+                        <h3 className="text-2xl font-bold mb-4">Send us a Message</h3>
                         <form className="space-y-4">
                             <input type="text" placeholder="Your Name" className="w-full p-3 rounded-md border" />
                             <input type="email" placeholder="Your Email" className="w-full p-3 rounded-md border" />
-                            <textarea placeholder="Tell us about your project" rows={5} className="w-full p-3 rounded-md border"></textarea>
-                            <Button type="submit" className="w-full">Submit Request</Button>
+                            <textarea placeholder="Your message" rows={5} className="w-full p-3 rounded-md border"></textarea>
+                            <Button type="submit" className="w-full">Submit</Button>
                         </form>
                     </div>
                     <div className="space-y-6">
@@ -169,21 +169,21 @@ export default function LandingPage() {
                             <MapPin className="w-6 h-6 text-primary mt-1"/>
                             <div>
                                 <h4 className="font-semibold">Our Office</h4>
-                                <p className="text-muted-foreground">123 Construction Ave, Suite 100<br/>Metropolis, USA 12345</p>
+                                <p className="text-muted-foreground">123 Innovation Drive, Suite 100<br/>Tech City, USA 54321</p>
                             </div>
                         </div>
                          <div className="flex items-start gap-4">
                             <Mail className="w-6 h-6 text-primary mt-1"/>
                             <div>
                                 <h4 className="font-semibold">Email Us</h4>
-                                <p className="text-muted-foreground">contact@buildtrack.pro</p>
+                                <p className="text-muted-foreground">support@buildtrack.pro</p>
                             </div>
                         </div>
                          <div className="flex items-start gap-4">
                             <Phone className="w-6 h-6 text-primary mt-1"/>
                             <div>
                                 <h4 className="font-semibold">Call Us</h4>
-                                <p className="text-muted-foreground">(123) 456-7890</p>
+                                <p className="text-muted-foreground">(123) 555-0123</p>
                             </div>
                         </div>
                     </div>
