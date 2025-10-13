@@ -1,4 +1,5 @@
 
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -116,11 +117,11 @@ export default function LandingPage() {
           <div className="relative h-full flex flex-col items-center justify-center text-center text-primary-foreground px-4">
             <div className="max-w-4xl">
               <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4 drop-shadow-lg">
-                Streamline Your Construction Project Management
+                Stop Losing Money on Untracked Project Costs
               </h1>
               <p className="text-lg md:text-2xl max-w-3xl mx-auto mb-8 drop-shadow-md">
                 The all-in-one platform for constructors. Track expenses, manage
-                materials, and control labor costs with ease.
+                materials, and control labor costs to protect your bottom line.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" asChild>
