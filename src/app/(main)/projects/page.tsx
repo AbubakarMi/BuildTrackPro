@@ -15,7 +15,7 @@ export default function ProjectsPage() {
             </div>
 
             <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
+                <CardHeader className="flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <CardTitle>Your Projects</CardTitle>
                         <CardDescription>
@@ -31,7 +31,7 @@ export default function ProjectsPage() {
                         <TableHeader>
                             <TableRow>
                                 <TableHead>Project Name</TableHead>
-                                <TableHead>Status</TableHead>
+                                <TableHead className="hidden sm:table-cell">Status</TableHead>
                                 <TableHead className="text-right">Budget</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -39,7 +39,7 @@ export default function ProjectsPage() {
                             {projects.map((project) => (
                                 <TableRow key={project.id}>
                                     <TableCell className="font-medium">{project.name}</TableCell>
-                                    <TableCell>In Progress</TableCell>
+                                    <TableCell className="hidden sm:table-cell">In Progress</TableCell>
                                     <TableCell className="text-right">$5,000,000</TableCell>
                                 </TableRow>
                             ))}

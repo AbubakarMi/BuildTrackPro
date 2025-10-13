@@ -95,7 +95,7 @@ export default function LandingPage() {
             <Link href="/login">Log In</Link>
           </Button>
           <Button asChild>
-            <Link href="/login">Get Started</Link>
+            <Link href="/pricing">Get Started</Link>
           </Button>
         </div>
       </header>
@@ -227,7 +227,7 @@ export default function LandingPage() {
               </p>
             </div>
             {aboutImage && (
-              <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
+              <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
                 <Image
                   src={aboutImage.imageUrl}
                   alt="A team of construction professionals reviewing blueprints"
@@ -305,7 +305,7 @@ export default function LandingPage() {
       </main>
 
       <footer className="bg-accent text-accent-foreground py-12">
-        <div className="container mx-auto px-4 grid md:grid-cols-4 gap-8">
+        <div className="container mx-auto px-4 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
             <div className="flex flex-col gap-4">
                 <Link href="#" className="flex items-center gap-2 font-headline text-xl font-bold">
                     <HardHat className="w-7 h-7" />
@@ -320,7 +320,7 @@ export default function LandingPage() {
                 <ul className="space-y-2 text-sm text-accent-foreground/80">
                     <li><Link href="#services" className="hover:text-primary transition-colors">Features</Link></li>
                     <li><Link href="#projects" className="hover:text-primary transition-colors">Use Cases</Link></li>
-                    <li><Link href="#" className="hover:text-primary transition-colors">Pricing</Link></li>
+                    <li><Link href="/pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
                     <li><Link href="#" className="hover:text-primary transition-colors">Demo</Link></li>
                 </ul>
             </div>

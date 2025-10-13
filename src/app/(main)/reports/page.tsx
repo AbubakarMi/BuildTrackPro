@@ -24,7 +24,7 @@ export default function ReportsPage() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-                        <p className="font-medium mb-2 sm:mb-0">Select Date Range:</p>
+                        <p className="font-medium mb-2 sm:mb-0 shrink-0">Select Date Range:</p>
                         <Popover>
                             <PopoverTrigger asChild>
                                 <Button
@@ -68,11 +68,11 @@ export default function ReportsPage() {
                     </div>
 
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-2">
-                        <Button variant="outline">
+                        <Button variant="outline" className="w-full sm:w-auto">
                             <FileCsv className="mr-2 h-4 w-4" />
                             Export as CSV
                         </Button>
-                        <Button>
+                        <Button className="w-full sm:w-auto">
                             <FilePdf className="mr-2 h-4 w-4" />
                             Download as PDF
                         </Button>

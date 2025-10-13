@@ -30,10 +30,10 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
-        <div className="lg:col-span-3">
+        <div className="col-span-1 lg:col-span-3">
           <MaterialUsageChart />
         </div>
-        <div className="lg:col-span-2">
+        <div className="col-span-1 lg:col-span-2">
           <BudgetOverview />
         </div>
       </div>

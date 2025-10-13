@@ -46,8 +46,8 @@ export default function RegisterPage() {
 
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
-      <div className="flex min-h-screen items-center justify-center py-12">
-        <div className="mx-auto grid w-full max-w-4xl gap-6 p-4">
+      <div className="flex min-h-screen items-center justify-center p-4 py-12 sm:p-6 md:p-8">
+        <div className="mx-auto grid w-full max-w-4xl gap-6">
           <div className="grid gap-2 text-center">
             <div className="flex items-center justify-center gap-2 font-headline text-3xl font-bold">
               <HardHat className="h-8 w-8 text-primary" />
@@ -61,17 +61,19 @@ export default function RegisterPage() {
           <div className="w-full">
             <div className="mb-8 flex items-center justify-between max-w-2xl mx-auto">
                 {steps.map((step, index) => (
-                    <div key={step.id} className="flex items-center">
-                        <div className={`flex h-10 w-10 items-center justify-center rounded-full ${currentStep >= step.id ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
-                            {step.icon}
-                        </div>
-                        <div className={`ml-3 hidden sm:block ${currentStep >= step.id ? 'text-foreground' : 'text-muted-foreground'}`}>
-                            <div className="text-sm font-medium">{step.name}</div>
+                    <React.Fragment key={step.id}>
+                        <div className="flex flex-col sm:flex-row items-center gap-2">
+                            <div className={`flex h-10 w-10 items-center justify-center rounded-full ${currentStep >= step.id ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
+                                {step.icon}
+                            </div>
+                            <div className={`text-center sm:text-left ${currentStep >= step.id ? 'text-foreground' : 'text-muted-foreground'}`}>
+                                <div className="text-sm font-medium">{step.name}</div>
+                            </div>
                         </div>
                         {index < steps.length - 1 && (
-                            <div className={`flex-auto border-t-2 transition-colors duration-500 ease-in-out mx-4 ${currentStep > index + 1 ? 'border-primary' : 'border-muted'}`}></div>
+                            <div className={`flex-auto border-t-2 transition-colors duration-500 ease-in-out mx-2 sm:mx-4 ${currentStep > index + 1 ? 'border-primary' : 'border-muted'}`}></div>
                         )}
-                    </div>
+                    </React.Fragment>
                 ))}
             </div>
 
