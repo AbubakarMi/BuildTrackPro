@@ -1,6 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { useRouter } from 'next/navigation';
+
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { HardHat, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
@@ -16,6 +21,15 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { useToast } from '@/hooks/use-toast';
 
 const solutionSteps = [
     {
@@ -31,6 +45,13 @@ const solutionSteps = [
         description: "Audit payment logs and manage overtime with AI-powered insights."
     }
 ]
+
+const formSchema = z.object({
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+  password: z.string().min(1, { message: 'Password is required.' }),
+});
+
+type LoginFormValues = z.infer<typeof formSchema>;
 
 function SolutionShowcase() {
     const [current, setCurrent] = useState(0);
@@ -74,14 +95,32 @@ function SolutionShowcase() {
 }
 
 export default function LoginPage() {
-  const bgImage = PlaceHolderImages.find(
-    (img) => img.id === 'login-background'
-  );
+  const router = useRouter();
+  const { toast } = useToast();
+  const form = useForm<LoginFormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  const onSubmit = (data: LoginFormValues) => {
+    // In a real app, you'd handle authentication here.
+    // For now, we'll just show a success toast and redirect.
+    console.log(data);
+    toast({
+      title: 'Login Successful',
+      description: 'Redirecting to your dashboard...',
+    });
+    router.push('/dashboard');
+  };
+
 
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
       <div className="flex min-h-screen items-center justify-center py-12">
-        <div className="mx-auto grid w-[350px] gap-6">
+        <div className="mx-auto grid w-[380px] gap-6">
           <div className="grid gap-2 text-center">
              <div className="flex items-center justify-center gap-2 font-headline text-3xl font-bold">
                 <HardHat className="h-8 w-8 text-primary" />
@@ -91,35 +130,54 @@ export default function LoginPage() {
               Enter your email below to login to your account
             </p>
           </div>
-          <div className="grid gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        placeholder="m@example.com"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <Link
-                  href="/forgot-password"
-                  className="ml-auto inline-block text-sm underline"
-                >
-                  Forgot your password?
-                </Link>
-              </div>
-              <Input id="password" type="password" required />
-            </div>
-            <Button type="submit" className="w-full" asChild>
-              <Link href="/dashboard">Login</Link>
-            </Button>
-            <Button variant="outline" className="w-full">
-              Login with Google
-            </Button>
-          </div>
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="flex items-center">
+                      <FormLabel>Password</FormLabel>
+                      <Link
+                        href="/forgot-password"
+                        className="ml-auto inline-block text-sm underline"
+                      >
+                        Forgot your password?
+                      </Link>
+                    </div>
+                    <FormControl>
+                      <Input type="password" placeholder='********' {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full">
+                Login
+              </Button>
+              <Button variant="outline" className="w-full">
+                Login with Google
+              </Button>
+            </form>
+          </Form>
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{' '}
             <Link href="/register" className="underline">
