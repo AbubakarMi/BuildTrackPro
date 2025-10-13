@@ -2,6 +2,7 @@
 
 
 
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -316,7 +317,7 @@ export default function LandingPage() {
                 </Link>
                 <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
                 <p className="text-sm text-accent-foreground/80">
-                  Powered by Nubenta Technology Limited
+                  <a href="#" className="hover:text-primary transition-colors">Powered by Nubenta Technology Limited</a>
                 </p>
             </div>
             <div>
