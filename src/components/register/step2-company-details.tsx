@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { countries, type State } from '@/lib/countries';
 import React from 'react';
+import { Combobox, ComboboxOption } from '../ui/combobox';
 
 const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
@@ -49,12 +50,16 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
   
   const selectedCountry = form.watch('country');
 
+  const countryOptions: ComboboxOption[] = React.useMemo(() => 
+    countries.map(c => ({ value: c.code, label: c.name }))
+  , []);
+
   React.useEffect(() => {
     if (selectedCountry) {
       const countryData = countries.find(c => c.code === selectedCountry);
       setStates(countryData?.states || []);
       // Reset state if country changes and current state is not in the new list of states
-      if(countryData && !countryData.states.some(s => s.code === form.getValues('state'))){
+      if(countryData && !countryData.states?.some(s => s.code === form.getValues('state'))){
         form.setValue('state', '');
       }
     } else {
@@ -148,20 +153,16 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
                   control={form.control}
                   name="country"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className='flex flex-col'>
                       <FormLabel>Country</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a country" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {countries.map(country => (
-                            <SelectItem key={country.code} value={country.code}>{country.name}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                        <Combobox
+                          options={countryOptions}
+                          value={field.value}
+                          onChange={field.onChange}
+                          placeholder='Select country...'
+                          searchPlaceholder='Search country...'
+                          notFoundText='No country found.'
+                        />
                       <FormMessage />
                     </FormItem>
                   )}
