@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useRouter } from 'next/navigation';
 
-import { HardHat, ArrowRight } from 'lucide-react';
+import { HardHat, ArrowRight, KeyRound } from 'lucide-react';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
@@ -46,6 +46,17 @@ const solutionSteps = [
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
+  otp: z.string().optional(),
+  newPassword: z.string().optional(),
+  confirmPassword: z.string().optional(),
+}).refine(data => {
+    if (data.otp !== undefined) {
+        return data.newPassword === data.confirmPassword;
+    }
+    return true;
+}, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
 });
 
 type ForgotPasswordFormValues = z.infer<typeof formSchema>;
@@ -94,19 +105,36 @@ function SolutionShowcase() {
 export default function ForgotPasswordPage() {
   const router = useRouter();
   const { toast } = useToast();
+  const [step, setStep] = useState(1);
+  const [email, setEmail] = useState("");
+
   const form = useForm<ForgotPasswordFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
+      otp: '',
+      newPassword: '',
+      confirmPassword: '',
     },
   });
 
-  const onSubmit = (data: ForgotPasswordFormValues) => {
-    // In a real app, you'd handle sending the password reset email here.
-    console.log(data);
+  const onEmailSubmit = (data: ForgotPasswordFormValues) => {
+    // In a real app, you'd send the OTP here.
+    console.log('Sending OTP to:', data.email);
+    setEmail(data.email);
     toast({
-      title: 'Password Reset Link Sent',
-      description: `If an account exists for ${data.email}, you will receive a password reset link shortly.`,
+      title: 'OTP Sent',
+      description: `An OTP has been sent to ${data.email}.`,
+    });
+    setStep(2);
+  };
+  
+  const onOtpSubmit = (data: ForgotPasswordFormValues) => {
+    // In a real app, you'd verify the OTP and reset the password.
+    console.log('Verifying OTP and resetting password:', data);
+    toast({
+      title: 'Password Reset Successful',
+      description: 'Your password has been changed. Please log in.',
     });
     router.push('/login');
   };
@@ -121,33 +149,87 @@ export default function ForgotPasswordPage() {
                 <h1>BuildTrack Pro</h1>
             </div>
             <p className="text-balance text-muted-foreground">
-              Enter your email to receive a password reset link.
+              {step === 1 ? 'Enter your email to receive an OTP.' : 'Check your email for the OTP.'}
             </p>
           </div>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="email"
-                        placeholder="m@example.com"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full">
-                Send Reset Link
-              </Button>
-            </form>
-          </Form>
+          
+          {step === 1 ? (
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onEmailSubmit)} className="grid gap-4">
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="m@example.com"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full">
+                  Send OTP Code
+                </Button>
+              </form>
+            </Form>
+          ) : (
+             <Form {...form}>
+              <form onSubmit={form.handleSubmit(onOtpSubmit)} className="grid gap-4">
+                 <FormField
+                  control={form.control}
+                  name="otp"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>OTP Code</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="123456"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                 <FormField
+                  control={form.control}
+                  name="newPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>New Password</FormLabel>
+                      <FormControl>
+                        <Input type="password" placeholder="********" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                 <FormField
+                  control={form.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Confirm New Password</FormLabel>
+                      <FormControl>
+                        <Input type="password" placeholder="********" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full">
+                  Reset Password
+                </Button>
+              </form>
+            </Form>
+          )}
+
           <div className="mt-4 text-center text-sm">
             Remember your password?{' '}
             <Link href="/login" className="underline">
