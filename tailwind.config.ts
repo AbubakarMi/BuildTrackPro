@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -94,10 +95,15 @@ export default {
             height: '0',
           },
         },
+        'zoom-in': {
+          '0%': { transform: 'scale(1)', 'transform-origin': 'center' },
+          '100%': { transform: 'scale(1.1)', 'transform-origin': 'center' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'zoom-in': 'zoom-in 20s ease-out forwards',
       },
     },
   },

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -30,7 +31,7 @@ export default function RegisterPage() {
   });
 
   const bgImage = PlaceHolderImages.find(
-    (img) => img.id === 'login-background'
+    (img) => img.id === 'highway-animated-bg'
   );
 
   const handleNext = (data: any) => {
@@ -96,14 +97,14 @@ export default function RegisterPage() {
           </div>
         </div>
       </div>
-      <div className="hidden bg-muted lg:block">
+      <div className="hidden bg-muted lg:block overflow-hidden">
         {bgImage && (
           <Image
             src={bgImage.imageUrl}
-            alt="Construction site"
+            alt="Busy highway with cars"
             width="1200"
             height="1800"
-            className="h-full w-full object-cover dark:brightness-[0.3] dark:grayscale"
+            className="h-full w-full object-cover animate-zoom-in dark:brightness-[0.3]"
             data-ai-hint={bgImage.imageHint}
           />
         )}

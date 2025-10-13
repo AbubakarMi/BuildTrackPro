@@ -7,6 +7,12 @@
       "imageHint": "construction site"
     },
     {
+      "id": "highway-animated-bg",
+      "description": "A busy highway with light trails from cars, giving a sense of motion.",
+      "imageUrl": "https://picsum.photos/seed/highway/1920/1080",
+      "imageHint": "highway traffic"
+    },
+    {
       "id": "user-avatar-1",
       "description": "Avatar for a user named Sarah Chen",
       "imageUrl": "https://picsum.photos/seed/user1/100/100",
