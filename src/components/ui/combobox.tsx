@@ -18,6 +18,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { ScrollArea } from "./scroll-area";
 
 export type ComboboxOption = {
   value: string;
@@ -26,7 +27,7 @@ export type ComboboxOption = {
 
 type ComboboxProps = {
   options: ComboboxOption[];
-  value: string;
+  value?: string;
   onChange: (value: string) => void;
   placeholder: string;
   searchPlaceholder: string;
@@ -58,7 +59,9 @@ export function Combobox({
           aria-expanded={open}
           className={cn("w-full justify-between", className)}
         >
-          {selectedOption ? selectedOption.label : placeholder}
+          <span className="truncate">
+            {selectedOption ? selectedOption.label : placeholder}
+          </span>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -68,25 +71,27 @@ export function Combobox({
           <CommandList>
             <CommandEmpty>{notFoundText}</CommandEmpty>
             <CommandGroup>
-              {options.map((option) => (
-                <CommandItem
-                  key={option.value}
-                  value={option.label}
-                  onSelect={(currentValue) => {
-                    const selectedValue = options.find(o => o.label.toLowerCase() === currentValue.toLowerCase())?.value || "";
-                    onChange(selectedValue);
-                    setOpen(false)
-                  }}
-                >
-                  <Check
-                    className={cn(
-                      "mr-2 h-4 w-4",
-                      value === option.value ? "opacity-100" : "opacity-0"
-                    )}
-                  />
-                  {option.label}
-                </CommandItem>
-              ))}
+                <ScrollArea className="h-64">
+                    {options.map((option) => (
+                        <CommandItem
+                        key={option.value}
+                        value={option.label}
+                        onSelect={(currentValue) => {
+                            const selectedValue = options.find(o => o.label.toLowerCase() === currentValue.toLowerCase())?.value || "";
+                            onChange(selectedValue);
+                            setOpen(false)
+                        }}
+                        >
+                        <Check
+                            className={cn(
+                            "mr-2 h-4 w-4",
+                            value === option.value ? "opacity-100" : "opacity-0"
+                            )}
+                        />
+                        {option.label}
+                        </CommandItem>
+                    ))}
+                </ScrollArea>
             </CommandGroup>
           </CommandList>
         </Command>

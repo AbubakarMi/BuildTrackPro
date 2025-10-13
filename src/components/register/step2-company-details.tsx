@@ -159,8 +159,8 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
                   control={form.control}
                   name="country"
                   render={({ field }) => (
-                    <FormItem className='flex flex-col'>
-                      <FormLabel>Country</FormLabel>
+                    <FormItem className='flex flex-col pt-2'>
+                      <FormLabel className='mb-2'>Country</FormLabel>
                         <Combobox
                           options={countryOptions}
                           value={field.value}
@@ -201,8 +201,8 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
                     control={form.control}
                     name="currency"
                     render={({ field }) => (
-                      <FormItem className='flex flex-col'>
-                        <FormLabel>Default Currency</FormLabel>
+                      <FormItem className='flex flex-col pt-2'>
+                        <FormLabel className='mb-2'>Default Currency</FormLabel>
                           <Combobox
                             options={currencyOptions}
                             value={field.value}
