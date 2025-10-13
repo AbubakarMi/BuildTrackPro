@@ -54,6 +54,7 @@ export default function LandingPage() {
   const projectImages = projects
     .map((p) => PlaceHolderImages.find((i) => i.id === p.id))
     .filter(Boolean);
+  const aboutImage = PlaceHolderImages.find(i => i.id === 'project-image-4');
 
   return (
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
@@ -215,34 +216,23 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-headline font-bold mb-6">
-                About BuildTrack Pro
+                From Blueprint to Bottom Line
               </h2>
               <p className="text-muted-foreground text-lg mb-4">
-                BuildTrack Pro was created by a team of construction and
-                software experts who saw the need for a simple, powerful tool
-                to manage project finances. We're dedicated to helping
-                constructors save money and build more efficiently.
+                Founded by a team of seasoned construction managers and innovative software engineers, BuildTrack Pro was born from a shared frustration: too many projects were losing profitability due to preventable administrative overhead and a lack of real-time financial insight. We knew there had to be a better way.
               </p>
               <p className="text-muted-foreground text-lg">
-                Our mission is to provide an intuitive platform that gives you
-                complete control over your project's budget, materials, and
-                labor costs.
+                Our mission is to empower constructors with a powerful, yet intuitive, platform that bridges the gap between the job site and the balance sheet. We're committed to providing the tools you need to build more efficiently, control costs with precision, and drive profitability on every project.
               </p>
             </div>
-            {PlaceHolderImages.find((i) => i.id === 'project-image-1') && (
-              <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
+            {aboutImage && (
+              <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
                 <Image
-                  src={
-                    PlaceHolderImages.find((i) => i.id === 'project-image-1')
-                      ?.imageUrl as string
-                  }
-                  alt="About us"
+                  src={aboutImage.imageUrl}
+                  alt="A team of construction professionals reviewing blueprints"
                   fill
                   className="object-cover"
-                  data-ai-hint={
-                    PlaceHolderImages.find((i) => i.id === 'project-image-1')
-                      ?.imageHint
-                  }
+                  data-ai-hint={aboutImage.imageHint}
                 />
               </div>
             )}
