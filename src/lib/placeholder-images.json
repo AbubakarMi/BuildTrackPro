@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "login-background",
+      "description": "A modern building under construction, viewed from a low angle against a clear sky.",
+      "imageUrl": "https://picsum.photos/seed/loginbg/1200/1800",
+      "imageHint": "construction site"
+    },
+    {
+      "id": "user-avatar-1",
+      "description": "Avatar for a user named Sarah Chen",
+      "imageUrl": "https://picsum.photos/seed/user1/100/100",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "project-logo-1",
+      "description": "Logo for Downtown Tower project",
+      "imageUrl": "https://picsum.photos/seed/proj1/100/100",
+      "imageHint": "building logo"
+    },
+    {
+      "id": "project-logo-2",
+      "description": "Logo for Suburbia Gardens project",
+      "imageUrl": "https://picsum.photos/seed/proj2/100/100",
+      "imageHint": "house logo"
+    },
+    {
+      "id": "project-image-1",
+      "description": "Image of Downtown Tower project site",
+      "imageUrl": "https://picsum.photos/seed/site1/600/400",
+      "imageHint": "construction building"
+    },
+    {
+      "id": "project-image-2",
+      "description": "Image of Suburbia Gardens project site",
+      "imageUrl": "https://picsum.photos/seed/site2/600/400",
+      "imageHint": "residential construction"
+    }
+  ]
 }
