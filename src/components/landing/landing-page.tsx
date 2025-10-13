@@ -312,9 +312,6 @@ export default function LandingPage() {
                     <span>BuildTrack Pro</span>
                 </Link>
                 <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
-                <p className="text-sm text-accent-foreground/80">
-                  Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a>
-                </p>
             </div>
             <div>
                 <h4 className="font-semibold mb-3">Product</h4>
@@ -331,6 +328,7 @@ export default function LandingPage() {
                     <li><Link href="#about" className="hover:text-primary transition-colors">About Us</Link></li>
                     <li><Link href="#" className="hover:text-primary transition-colors">Careers</Link></li>
                     <li><Link href="#contact" className="hover:text-primary transition-colors">Contact</Link></li>
+                    <li><p className="text-sm text-accent-foreground/80">Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a></p></li>
                 </ul>
             </div>
             <div>

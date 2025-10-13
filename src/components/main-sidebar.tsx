@@ -93,7 +93,7 @@ export function MainSidebar() {
             </SidebarMenuItem>
         </SidebarMenu>
         <div className="text-center w-full text-xs text-muted-foreground px-2 group-data-[collapsible=icon]:hidden">
-          <p className='text-xs text-accent-foreground/80'>Powered by Nubenta</p>
+          <p className='text-xs text-accent-foreground/80'>Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a></p>
         </div>
       </SidebarFooter>
     </>
