@@ -306,12 +306,11 @@ export default function LandingPage() {
 
       <footer className="bg-accent text-accent-foreground py-12">
         <div className="container mx-auto px-4 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
                 <Link href="#" className="flex items-center gap-2 font-headline text-xl font-bold">
                     <HardHat className="w-7 h-7" />
                     <span>BuildTrack Pro</span>
                 </Link>
-                <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
                 <p className="text-xs text-accent-foreground/80">Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a></p>
             </div>
             <div>
@@ -339,7 +338,12 @@ export default function LandingPage() {
                 </ul>
             </div>
         </div>
+        <div className="container mx-auto px-4 mt-8 border-t border-accent-foreground/20 pt-8 text-center text-sm text-accent-foreground/80">
+            <p>&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
+        </div>
       </footer>
     </div>
   );
 }
+
+    

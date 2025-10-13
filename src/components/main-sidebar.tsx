@@ -92,10 +92,12 @@ export function MainSidebar() {
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>
-        <div className="text-center w-full text-xs text-muted-foreground px-2 group-data-[collapsible=icon]:hidden">
-          <p className='text-xs text-accent-foreground/80'>Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a></p>
+        <div className="w-full text-center text-xs text-muted-foreground/80 px-2 group-data-[collapsible=icon]:hidden">
+          <p>Powered by <a href="#" className="hover:text-primary transition-colors font-medium">Nubenta Technology Limited</a></p>
         </div>
       </SidebarFooter>
     </>
   );
 }
+
+    
