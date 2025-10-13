@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -48,7 +49,7 @@ function SolutionShowcase() {
                 {solutionSteps.map((step, index) => (
                     <div key={index} className={`transition-all duration-700 ${current === index ? 'opacity-100' : 'opacity-40'}`}>
                         <div className="flex items-center gap-4">
-                            <div className={`flex items-center justify-center h-12 w-12 rounded-full border-2 ${current === index ? 'border-primary bg-primary/20' : 'border-white/50'}`}>
+                            <div className={`flex items-center justify-center h-12 w-12 rounded-full border-2 transition-colors duration-500 ${current === index ? 'border-primary bg-primary/20' : 'border-white/50'}`}>
                                 <span className="text-xl font-bold">{index + 1}</span>
                             </div>
                             <div>
@@ -57,8 +58,8 @@ function SolutionShowcase() {
                             </div>
                         </div>
                         {index < solutionSteps.length - 1 && (
-                            <div className="h-10 ml-6 flex items-center">
-                                <ArrowRight className={`w-6 h-6 transition-all duration-700 ${current === index ? 'text-primary scale-110' : 'text-white/50'}`} />
+                            <div className={`h-10 ml-6 flex items-center transition-all duration-500 ${current === index ? 'opacity-100' : 'opacity-0'}`}>
+                                <ArrowRight className={`w-6 h-6 text-primary transition-all duration-700 ${current === index ? 'scale-110 -rotate-90' : 'scale-100 -rotate-90'}`} />
                             </div>
                         )}
                     </div>
