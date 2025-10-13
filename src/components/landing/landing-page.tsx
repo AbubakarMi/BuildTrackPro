@@ -1,4 +1,6 @@
 
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -9,11 +11,17 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Building, Hammer, Paintbrush, HardHat, Phone, Mail, MapPin } from 'lucide-react';
+import { Building, Hammer, Paintbrush, HardHat, Phone, Mail, MapPin, Loader2, CheckCircle } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { useState } from 'react';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
+import { useToast } from '@/hooks/use-toast';
 
 const services = [
   {
@@ -48,6 +56,14 @@ const projects = [
   { id: 'project-image-1', name: 'Downtown Tower 2', category: 'Commercial' },
 ];
 
+const contactFormSchema = z.object({
+  name: z.string().min(2, 'Please enter your name.'),
+  email: z.string().email('Please enter a valid email address.'),
+  message: z.string().min(10, 'Your message should be at least 10 characters.'),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
+
 export default function LandingPage() {
   const heroImage = PlaceHolderImages.find(
     (img) => img.id === 'login-background'
@@ -56,6 +72,28 @@ export default function LandingPage() {
     .map((p) => PlaceHolderImages.find((i) => i.id === p.id))
     .filter(Boolean);
   const aboutImage = PlaceHolderImages.find(i => i.id === 'project-image-4');
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const { toast } = useToast();
+
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: { name: '', email: '', message: '' },
+  });
+
+  const onContactSubmit = async (data: ContactFormValues) => {
+    setIsSubmitting(true);
+    // Mock API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    console.log('Contact form submitted:', data);
+    setIsSubmitting(false);
+    setSubmitted(true);
+    toast({
+      title: "Message Sent!",
+      description: "Thanks for reaching out. We'll get back to you shortly.",
+    });
+  };
 
   return (
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
@@ -248,29 +286,76 @@ export default function LandingPage() {
                     Have a question or want to see a demo? Get in touch with our team.
                 </p>
             </div>
-            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12">
               <Card>
                 <CardHeader>
                     <CardTitle>Send us a Message</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <form className="space-y-4">
-                      <Input type="text" placeholder="Your Name" />
-                      <Input type="email" placeholder="Your Email" />
-                      <Textarea placeholder="Your message" rows={5} />
-                      <Button type="submit" className="w-full">
-                        Submit
-                      </Button>
-                    </form>
+                  {submitted ? (
+                    <div className="flex flex-col items-center justify-center text-center h-full min-h-[300px]">
+                      <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
+                      <h3 className="text-xl font-semibold">Thank You!</h3>
+                      <p className="text-muted-foreground">Your message has been sent. We'll be in touch soon.</p>
+                    </div>
+                  ) : (
+                    <Form {...form}>
+                      <form onSubmit={form.handleSubmit(onContactSubmit)} className="space-y-4">
+                        <FormField
+                          control={form.control}
+                          name="name"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Your Name</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Jane Doe" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Your Email</FormLabel>
+                              <FormControl>
+                                <Input type="email" placeholder="jane@example.com" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="message"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Your Message</FormLabel>
+                              <FormControl>
+                                <Textarea placeholder="Tell us how we can help..." rows={5} {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <Button type="submit" className="w-full" disabled={isSubmitting}>
+                          {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                          Submit
+                        </Button>
+                      </form>
+                    </Form>
+                  )}
                 </CardContent>
               </Card>
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 text-primary p-3 rounded-full">
+                  <div className="bg-primary/10 text-primary p-4 rounded-lg">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Our Office</h4>
+                    <h4 className="font-semibold text-lg">Our Office</h4>
                     <p className="text-muted-foreground">
                       123 Innovation Drive, Suite 100
                       <br />
@@ -279,22 +364,22 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 text-primary p-3 rounded-full">
+                  <div className="bg-primary/10 text-primary p-4 rounded-lg">
                     <Mail className="w-6 h-6 " />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Email Us</h4>
+                    <h4 className="font-semibold text-lg">Email Us</h4>
                     <p className="text-muted-foreground">
                       support@buildtrack.pro
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 text-primary p-3 rounded-full">
+                  <div className="bg-primary/10 text-primary p-4 rounded-lg">
                     <Phone className="w-6 h-6 " />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Call Us</h4>
+                    <h4 className="font-semibold text-lg">Call Us</h4>
                     <p className="text-muted-foreground">(123) 555-0123</p>
                   </div>
                 </div>
@@ -349,5 +434,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-    
