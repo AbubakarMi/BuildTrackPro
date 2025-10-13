@@ -340,7 +340,7 @@ export default function LandingPage() {
             </div>
         </div>
         <div className="border-t border-accent-foreground/20">
-            <div className="container mx-auto px-4 flex items-center justify-between h-16 text-sm text-accent-foreground/80">
+            <div className="container mx-auto px-4 text-center h-16 flex flex-col justify-center text-sm text-accent-foreground/80">
                 <p>&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
                 <p>Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a></p>
             </div>
