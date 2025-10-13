@@ -2,13 +2,10 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { HardHat, Building, User, CreditCard } from 'lucide-react';
 import Step1_UserAccount from '@/components/register/step1-user-account';
 import Step2_CompanyDetails from '@/components/register/step2-company-details';
 import Step3_PlanSelection from '@/components/register/step3-plan-selection';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const steps = [
@@ -29,10 +26,6 @@ export default function RegisterPage() {
     yourRole: '',
     plan: 'basic',
   });
-
-  const bgImage = PlaceHolderImages.find(
-    (img) => img.id === 'highway-animated-bg'
-  );
 
   const handleNext = (data: any) => {
     setFormData((prev) => ({ ...prev, ...data }));
@@ -97,17 +90,19 @@ export default function RegisterPage() {
           </div>
         </div>
       </div>
-      <div className="hidden bg-muted lg:block overflow-hidden">
-        {bgImage && (
-          <Image
-            src={bgImage.imageUrl}
-            alt="Busy highway with cars"
-            width="1200"
-            height="1800"
-            className="h-full w-full object-cover animate-zoom-in dark:brightness-[0.3]"
-            data-ai-hint={bgImage.imageHint}
-          />
-        )}
+      <div className="hidden bg-muted lg:block relative overflow-hidden">
+        <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2 z-0 dark:brightness-[0.4]"
+            src="https://cdn.coverr.co/videos/coverr-a-highway-in-the-city-4313/1080p.mp4"
+            // Replace the src with your own video file
+        >
+            Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-black/20 z-10"></div>
       </div>
     </div>
   );
