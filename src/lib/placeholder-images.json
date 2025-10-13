@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "login-background",
-      "description": "A construction manager reviewing project plans on a tablet at a modern construction site, representing technology and project management.",
-      "imageUrl": "https://picsum.photos/seed/site-meeting/1920/1080",
-      "imageHint": "construction management"
+      "description": "A modern skyscraper under construction, representing large-scale project management and ambition.",
+      "imageUrl": "https://picsum.photos/seed/modern-skyscraper/1920/1080",
+      "imageHint": "skyscraper construction"
     },
     {
       "id": "highway-animated-bg",
