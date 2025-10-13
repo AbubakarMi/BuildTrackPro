@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -91,8 +92,8 @@ export function MainSidebar() {
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>
-        <div className="text-xs text-muted-foreground px-2 group-data-[collapsible=icon]:hidden">
-          Powered by <Link href="#" className="hover:text-primary underline">Nubenta Technology Limited</Link>
+        <div className="text-center w-full text-xs text-muted-foreground px-2 group-data-[collapsible=icon]:hidden">
+          <Link href="#" className="hover:text-primary transition-colors">Powered by Nubenta</Link>
         </div>
       </SidebarFooter>
     </>

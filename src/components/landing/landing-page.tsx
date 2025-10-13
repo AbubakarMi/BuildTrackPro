@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -305,40 +306,40 @@ export default function LandingPage() {
 
       <footer className="bg-accent text-accent-foreground py-12">
         <div className="container mx-auto px-4 grid md:grid-cols-4 gap-8">
-            <div>
-                <div className="flex items-center gap-2 font-headline text-xl font-bold mb-4">
+            <div className="flex flex-col gap-4">
+                <Link href="#" className="flex items-center gap-2 font-headline text-xl font-bold">
                     <HardHat className="w-7 h-7" />
                     <span>BuildTrack Pro</span>
-                </div>
+                </Link>
                 <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
-                <p className="text-sm text-accent-foreground/80 mt-2">
-                  Powered by <Link href="#" className="hover:text-primary underline">Nubenta Technology Limited</Link>
-                </p>
             </div>
             <div>
                 <h4 className="font-semibold mb-3">Product</h4>
                 <ul className="space-y-2 text-sm text-accent-foreground/80">
-                    <li><Link href="#services" className="hover:text-primary">Features</Link></li>
-                    <li><Link href="#projects" className="hover:text-primary">Use Cases</Link></li>
-                    <li><Link href="#" className="hover:text-primary">Pricing</Link></li>
-                    <li><Link href="#" className="hover:text-primary">Demo</Link></li>
+                    <li><Link href="#services" className="hover:text-primary transition-colors">Features</Link></li>
+                    <li><Link href="#projects" className="hover:text-primary transition-colors">Use Cases</Link></li>
+                    <li><Link href="#" className="hover:text-primary transition-colors">Pricing</Link></li>
+                    <li><Link href="#" className="hover:text-primary transition-colors">Demo</Link></li>
                 </ul>
             </div>
             <div>
                 <h4 className="font-semibold mb-3">Company</h4>
                 <ul className="space-y-2 text-sm text-accent-foreground/80">
-                    <li><Link href="#about" className="hover:text-primary">About Us</Link></li>
-                    <li><Link href="#" className="hover:text-primary">Careers</Link></li>
-                    <li><Link href="#contact" className="hover:text-primary">Contact</Link></li>
+                    <li><Link href="#about" className="hover:text-primary transition-colors">About Us</Link></li>
+                    <li><Link href="#" className="hover:text-primary transition-colors">Careers</Link></li>
+                    <li><Link href="#contact" className="hover:text-primary transition-colors">Contact</Link></li>
                 </ul>
             </div>
             <div>
                 <h4 className="font-semibold mb-3">Legal</h4>
                 <ul className="space-y-2 text-sm text-accent-foreground/80">
-                    <li><Link href="#" className="hover:text-primary">Privacy Policy</Link></li>
-                    <li><Link href="#" className="hover:text-primary">Terms of Service</Link></li>
+                    <li><Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                    <li><Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>
                 </ul>
             </div>
+        </div>
+        <div className="container mx-auto px-4 mt-8 pt-8 border-t border-accent-foreground/10 text-center text-sm text-accent-foreground/80">
+          <p>Powered by <Link href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</Link></p>
         </div>
       </footer>
     </div>
