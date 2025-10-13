@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Building, Hammer, PaintBrush, HardHat, Phone, Mail, MapPin } from 'lucide-react';
+import { Building, Hammer, Paintbrush, HardHat, Phone, Mail, MapPin } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { JSX, SVGProps } from 'react';
 
@@ -18,7 +18,7 @@ const services = [
     description: 'Building from the ground up, we handle all aspects of new construction projects with precision and quality craftsmanship.',
   },
   {
-    icon: <PaintBrush className="w-12 h-12 text-primary" />,
+    icon: <Paintbrush className="w-12 h-12 text-primary" />,
     title: 'Renovations & Remodeling',
     description: 'Transform your existing space into something new and beautiful, tailored to your style and functional needs.',
   },
