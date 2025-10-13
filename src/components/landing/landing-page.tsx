@@ -9,18 +9,18 @@ import { JSX, SVGProps } from 'react';
 const services = [
   {
     icon: <Building className="w-12 h-12 text-primary" />,
-    title: 'General Contracting',
-    description: 'Overall project management from start to finish, ensuring your vision comes to life on time and within budget.',
+    title: 'Expense Tracking',
+    description: 'Log every purchase and site expense to get a real-time view of your project\'s financial health.',
   },
   {
     icon: <Hammer className="w-12 h-12 text-primary" />,
-    title: 'New Construction',
-    description: 'Building from the ground up, we handle all aspects of new construction projects with precision and quality craftsmanship.',
+    title: 'Material Management',
+    description: 'Track material usage from purchase to installation, reducing waste and preventing budget overruns.',
   },
   {
     icon: <Paintbrush className="w-12 h-12 text-primary" />,
-    title: 'Renovations & Remodeling',
-    description: 'Transform your existing space into something new and beautiful, tailored to your style and functional needs.',
+    title: 'Labor Cost Control',
+    description: 'Manage worker payments and audit logs to ensure accurate compensation and labor budget adherence.',
   },
 ];
 
@@ -69,10 +69,10 @@ export default function LandingPage() {
           <div className="relative h-full flex flex-col items-center justify-center text-center text-white px-4">
             <div className="bg-black/50 p-8 rounded-lg">
                 <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">
-                    Building Your Vision
+                    Take Control of Your Construction Costs
                 </h1>
-                <p className="text-lg md:text-2xl max-w-2xl mx-auto mb-8">
-                    Your trusted partner in construction, from concept to completion.
+                <p className="text-lg md:text-2xl max-w-3xl mx-auto mb-8">
+                    Stop losing money on untracked expenses. Track material usage, worker payments, and forecast your budget with precision.
                 </p>
                 <Button size="lg" asChild>
                     <Link href="#contact">Request a Quote</Link>
@@ -83,7 +83,7 @@ export default function LandingPage() {
 
         <section id="services" className="py-16 md:py-24 bg-secondary">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">Our Services</h2>
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">Features for Constructors</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {services.map((service, index) => (
                 <Card key={index} className="text-center">

@@ -16,6 +16,7 @@ import {
   FileText,
   Settings,
   HardHat,
+  FolderKanban,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -25,6 +26,11 @@ const menuItems = [
     href: '/dashboard',
     label: 'Dashboard',
     icon: LayoutDashboard,
+  },
+  {
+    href: '/projects',
+    label: 'Projects',
+    icon: FolderKanban,
   },
   {
     href: '/materials',
@@ -62,7 +68,7 @@ export function MainSidebar() {
             <SidebarMenuItem key={item.href}>
               <SidebarMenuButton
                 asChild
-                isActive={pathname === item.href}
+                isActive={pathname.startsWith(item.href)}
                 tooltip={item.label}
               >
                 <Link href={item.href}>

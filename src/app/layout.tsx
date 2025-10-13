@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'BuildTrack Pro',
-  description: 'Construction Expense Manager',
+  title: 'BuildTrack Pro - Construction Expense Manager',
+  description: 'Track material usage, worker payments, and forecast budgets for your construction projects.',
 };
 
 export default function RootLayout({
