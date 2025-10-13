@@ -304,44 +304,50 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="bg-accent text-accent-foreground py-12">
-        <div className="container mx-auto px-4 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="flex flex-col gap-2">
-                <Link href="#" className="flex items-center gap-2 font-headline text-xl font-bold">
-                    <HardHat className="w-7 h-7" />
-                    <span>BuildTrack Pro</span>
-                </Link>
-            </div>
-            <div>
-                <h4 className="font-semibold mb-3">Product</h4>
-                <ul className="space-y-2 text-sm text-accent-foreground/80">
-                    <li><Link href="#services" className="hover:text-primary transition-colors">Features</Link></li>
-                    <li><Link href="#projects" className="hover:text-primary transition-colors">Use Cases</Link></li>
-                    <li><Link href="/pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
-                    <li><Link href="#" className="hover:text-primary transition-colors">Demo</Link></li>
-                </ul>
-            </div>
-            <div>
-                <h4 className="font-semibold mb-3">Company</h4>
-                <ul className="space-y-2 text-sm text-accent-foreground/80">
-                    <li><Link href="#about" className="hover:text-primary transition-colors">About Us</Link></li>
-                    <li><Link href="#" className="hover:text-primary transition-colors">Careers</Link></li>
-                    <li><Link href="#contact" className="hover:text-primary transition-colors">Contact</Link></li>
-                </ul>
-            </div>
-            <div>
-                <h4 className="font-semibold mb-3">Legal</h4>
-                <ul className="space-y-2 text-sm text-accent-foreground/80">
-                    <li><Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-                    <li><Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-                </ul>
+      <footer className="bg-accent text-accent-foreground">
+        <div className="container mx-auto px-4 py-12">
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="flex flex-col gap-2">
+                    <Link href="#" className="flex items-center gap-2 font-headline text-xl font-bold">
+                        <HardHat className="w-7 h-7" />
+                        <span>BuildTrack Pro</span>
+                    </Link>
+                </div>
+                <div>
+                    <h4 className="font-semibold mb-3">Product</h4>
+                    <ul className="space-y-2 text-sm text-accent-foreground/80">
+                        <li><Link href="#services" className="hover:text-primary transition-colors">Features</Link></li>
+                        <li><Link href="#projects" className="hover:text-primary transition-colors">Use Cases</Link></li>
+                        <li><Link href="/pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
+                        <li><Link href="#" className="hover:text-primary transition-colors">Demo</Link></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 className="font-semibold mb-3">Company</h4>
+                    <ul className="space-y-2 text-sm text-accent-foreground/80">
+                        <li><Link href="#about" className="hover:text-primary transition-colors">About Us</Link></li>
+                        <li><Link href="#" className="hover:text-primary transition-colors">Careers</Link></li>
+                        <li><Link href="#contact" className="hover:text-primary transition-colors">Contact</Link></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 className="font-semibold mb-3">Legal</h4>
+                    <ul className="space-y-2 text-sm text-accent-foreground/80">
+                        <li><Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                        <li><Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div className="container mx-auto px-4 mt-8 border-t border-accent-foreground/20 pt-8 text-center text-sm text-accent-foreground/80">
-            <p>&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
-            <p className="text-xs">Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a></p>
+        <div className="border-t border-accent-foreground/20">
+            <div className="container mx-auto px-4 flex items-center justify-between h-16 text-sm text-accent-foreground/80">
+                <p>&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
+                <p>Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a></p>
+            </div>
         </div>
       </footer>
     </div>
   );
 }
+
+    
