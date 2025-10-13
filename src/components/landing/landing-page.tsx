@@ -418,8 +418,8 @@ export default function LandingPage() {
                 <div>
                     <h4 className="font-semibold mb-3">Legal</h4>
                     <ul className="space-y-2 text-sm text-accent-foreground/80">
-                        <li><Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-                        <li><Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+                        <li><Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                        <li><Link href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link></li>
                     </ul>
                 </div>
             </div>
@@ -427,7 +427,7 @@ export default function LandingPage() {
         <div className="border-t border-accent-foreground/20">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between text-sm text-accent-foreground/80">
                 <p>&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
-                <p>Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a></p>
+                <p>Powered by <a href="#" className="hover:text-primary transition-colors font-medium">Nubenta Technology Limited</a></p>
             </div>
         </div>
       </footer>
