@@ -3,56 +3,56 @@
     {
       "id": "login-background",
       "description": "A modern building under construction, viewed from a low angle against a clear sky.",
-      "imageUrl": "https://picsum.photos/seed/herobg/1920/1080",
-      "imageHint": "construction site"
+      "imageUrl": "https://picsum.photos/seed/construction-hero/1920/1080",
+      "imageHint": "modern architecture"
     },
     {
       "id": "highway-animated-bg",
-      "description": "A busy highway with light trails from cars, giving a sense of motion.",
-      "imageUrl": "https://picsum.photos/seed/highway/1920/1080",
-      "imageHint": "highway traffic"
+      "description": "An aerial view of a large construction crane at a building site.",
+      "imageUrl": "https://picsum.photos/seed/crane-site/1920/1080",
+      "imageHint": "construction crane"
     },
     {
       "id": "user-avatar-1",
       "description": "Avatar for a user named Sarah Chen",
-      "imageUrl": "https://picsum.photos/seed/user1/100/100",
-      "imageHint": "woman portrait"
+      "imageUrl": "https://picsum.photos/seed/architect/100/100",
+      "imageHint": "female architect"
     },
     {
       "id": "project-logo-1",
       "description": "Logo for Downtown Tower project",
-      "imageUrl": "https://picsum.photos/seed/proj1/100/100",
+      "imageUrl": "https://picsum.photos/seed/tower-logo/100/100",
       "imageHint": "building logo"
     },
     {
       "id": "project-logo-2",
       "description": "Logo for Suburbia Gardens project",
-      "imageUrl": "https://picsum.photos/seed/proj2/100/100",
+      "imageUrl": "https://picsum.photos/seed/house-logo/100/100",
       "imageHint": "house logo"
     },
     {
       "id": "project-image-1",
       "description": "Image of Downtown Tower project site",
-      "imageUrl": "https://picsum.photos/seed/site1/600/400",
-      "imageHint": "construction building"
+      "imageUrl": "https://picsum.photos/seed/downtown-construction/600/400",
+      "imageHint": "city building"
     },
     {
       "id": "project-image-2",
       "description": "Image of Suburbia Gardens project site",
-      "imageUrl": "https://picsum.photos/seed/site2/600/400",
-      "imageHint": "residential construction"
+      "imageUrl": "https://picsum.photos/seed/suburb-house/600/400",
+      "imageHint": "modern house"
     },
     {
       "id": "project-image-3",
       "description": "Image of Westside Bridge project",
-      "imageUrl": "https://picsum.photos/seed/site3/600/400",
-      "imageHint": "bridge construction"
+      "imageUrl": "https://picsum.photos/seed/bridge-build/600/400",
+      "imageHint": "bridge architecture"
     },
     {
       "id": "project-image-4",
-      "description": "Image of a modern office complex",
-      "imageUrl": "https://picsum.photos/seed/site4/600/400",
-      "imageHint": "office building"
+      "description": "A team of construction professionals reviewing blueprints.",
+      "imageUrl": "https://picsum.photos/seed/team-blueprint/600/400",
+      "imageHint": "construction team"
     }
   ]
 }
