@@ -14,7 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const bgImage = PlaceHolderImages.find(
     (img) => img.id === 'login-background'
   );
@@ -22,17 +22,25 @@ export default function LoginPage() {
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
       <div className="flex min-h-screen items-center justify-center py-12">
-        <div className="mx-auto grid w-[350px] gap-6">
+        <div className="mx-auto grid w-[400px] gap-6">
           <div className="grid gap-2 text-center">
-             <div className="flex items-center justify-center gap-2 font-headline text-3xl font-bold">
-                <HardHat className="h-8 w-8 text-primary" />
-                <h1>BuildTrack Pro</h1>
+            <div className="flex items-center justify-center gap-2 font-headline text-3xl font-bold">
+              <HardHat className="h-8 w-8 text-primary" />
+              <h1>BuildTrack Pro</h1>
             </div>
             <p className="text-balance text-muted-foreground">
-              Enter your email below to login to your account
+              Create your account and start managing your projects.
             </p>
           </div>
           <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="company-name">Company Name</Label>
+              <Input id="company-name" placeholder="Acme Inc." required />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="full-name">Your Name</Label>
+              <Input id="full-name" placeholder="John Doe" required />
+            </div>
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -43,28 +51,17 @@ export default function LoginPage() {
               />
             </div>
             <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <Link
-                  href="/forgot-password"
-                  className="ml-auto inline-block text-sm underline"
-                >
-                  Forgot your password?
-                </Link>
-              </div>
+              <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" required />
             </div>
             <Button type="submit" className="w-full" asChild>
-              <Link href="/dashboard">Login</Link>
-            </Button>
-            <Button variant="outline" className="w-full">
-              Login with Google
+              <Link href="/dashboard">Create an account</Link>
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{' '}
-            <Link href="/register" className="underline">
-              Sign up
+            Already have an account?{' '}
+            <Link href="/login" className="underline">
+              Log in
             </Link>
           </div>
         </div>

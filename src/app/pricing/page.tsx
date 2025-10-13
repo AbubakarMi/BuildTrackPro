@@ -18,7 +18,7 @@ const tiers = [
     ],
     buttonText: "Start 14-Day Trial",
     buttonVariant: "outline",
-    href: "/login",
+    href: "/register",
   },
   {
     name: "Basic",
@@ -34,7 +34,7 @@ const tiers = [
     ],
     buttonText: "Choose Basic",
     buttonVariant: "default",
-    href: "/login",
+    href: "/register",
     popular: true,
   },
   {
@@ -51,7 +51,7 @@ const tiers = [
     ],
     buttonText: "Choose Pro",
     buttonVariant: "outline",
-    href: "/login",
+    href: "/register",
   },
 ];
 
