@@ -39,7 +39,7 @@ export default function Step1_UserAccount({ onNext, initialData }: Step1Props) {
   };
 
   return (
-    <Card>
+    <Card className='max-w-xl mx-auto'>
       <CardHeader>
         <CardTitle>Administrator Details</CardTitle>
         <CardDescription>The user who creates the company account will be the administrator.</CardDescription>

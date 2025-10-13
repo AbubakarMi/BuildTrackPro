@@ -42,7 +42,7 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
   };
 
   return (
-    <Card>
+    <Card className='max-w-xl mx-auto'>
       <CardHeader>
         <CardTitle>Company Information</CardTitle>
         <CardDescription>Tell us a bit about your company.</CardDescription>

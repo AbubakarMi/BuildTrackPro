@@ -47,7 +47,7 @@ export default function RegisterPage() {
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
       <div className="flex min-h-screen items-center justify-center py-12">
-        <div className="mx-auto grid w-[480px] max-w-full gap-6 p-4">
+        <div className="mx-auto grid w-full max-w-4xl gap-6 p-4">
           <div className="grid gap-2 text-center">
             <div className="flex items-center justify-center gap-2 font-headline text-3xl font-bold">
               <HardHat className="h-8 w-8 text-primary" />
@@ -59,7 +59,7 @@ export default function RegisterPage() {
           </div>
 
           <div className="w-full">
-            <div className="mb-8 flex items-center justify-between">
+            <div className="mb-8 flex items-center justify-between max-w-2xl mx-auto">
                 {steps.map((step, index) => (
                     <div key={step.id} className="flex items-center">
                         <div className={`flex h-10 w-10 items-center justify-center rounded-full ${currentStep >= step.id ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
@@ -98,7 +98,6 @@ export default function RegisterPage() {
             playsInline
             className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2 z-0 dark:brightness-[0.4]"
             src="https://cdn.coverr.co/videos/coverr-a-highway-in-the-city-4313/1080p.mp4"
-            // Replace the src with your own video file
         >
             Your browser does not support the video tag.
         </video>
