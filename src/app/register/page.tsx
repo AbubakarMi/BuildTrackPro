@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { HardHat, Building, User, CreditCard } from 'lucide-react';
 import Step1_UserAccount from '@/components/register/step1-user-account';
 import Step2_CompanyDetails from '@/components/register/step2-company-details';
