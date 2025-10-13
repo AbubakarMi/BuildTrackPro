@@ -92,7 +92,7 @@ export function MainSidebar() {
             </SidebarMenuItem>
         </SidebarMenu>
         <div className="text-xs text-muted-foreground px-2 group-data-[collapsible=icon]:hidden">
-          Powered by Nubenta Technology Limited
+          Powered by <Link href="#" className="hover:text-primary underline">Nubenta Technology Limited</Link>
         </div>
       </SidebarFooter>
     </>

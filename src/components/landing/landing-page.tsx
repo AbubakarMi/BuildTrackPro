@@ -311,7 +311,9 @@ export default function LandingPage() {
                     <span>BuildTrack Pro</span>
                 </div>
                 <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
-                <p className="text-sm text-accent-foreground/80 mt-2">Powered by Nubenta Technology Limited</p>
+                <p className="text-sm text-accent-foreground/80 mt-2">
+                  Powered by <Link href="#" className="hover:text-primary underline">Nubenta Technology Limited</Link>
+                </p>
             </div>
             <div>
                 <h4 className="font-semibold mb-3">Product</h4>
