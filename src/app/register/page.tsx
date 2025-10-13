@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -58,8 +56,10 @@ function SolutionShowcase() {
                             </div>
                         </div>
                         {index < solutionSteps.length - 1 && (
-                            <div className={`h-10 ml-6 flex items-center transition-all duration-500 ${current === index ? 'opacity-100' : 'opacity-0'}`}>
-                                <ArrowRight className={`w-6 h-6 text-primary transition-all duration-700 ${current === index ? 'scale-110 -rotate-90' : 'scale-100 -rotate-90'}`} />
+                             <div className="h-10 ml-6 flex items-center transition-opacity duration-500 opacity-0 data-[active=true]:opacity-100" data-active={current === index}>
+                                <div className="h-full w-0.5 bg-primary/50 relative">
+                                    <ArrowRight className="w-6 h-6 text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 rotate-90 scale-0 data-[active=true]:scale-110" data-active={current === index} />
+                                </div>
                             </div>
                         )}
                     </div>
@@ -77,6 +77,12 @@ export default function RegisterPage() {
     email: '',
     password: '',
     companyName: '',
+    companyEmail: '',
+    companyPhone: '',
+    companyAddress: '',
+    city: '',
+    state: '',
+    country: '',
     companyWebsite: '',
     companySize: '',
     yourRole: '',
@@ -115,10 +121,10 @@ export default function RegisterPage() {
           </div>
 
           <div className="w-full">
-            <div className="mb-8 flex items-center justify-center max-w-md mx-auto sm:max-w-2xl">
+             <div className="mb-8 flex items-center justify-center max-w-md mx-auto sm:max-w-2xl">
                 {steps.map((step, index) => (
                     <React.Fragment key={step.id}>
-                        <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:items-start sm:text-left">
+                        <div className="flex flex-col items-center text-center gap-2 sm:flex-row sm:items-start sm:text-left">
                             <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${currentStep >= step.id ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
                                 {step.icon}
                             </div>

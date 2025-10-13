@@ -18,6 +18,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
+  companyEmail: z.string().email({ message: 'Please enter a valid company email.' }),
+  companyPhone: z.string().min(5, { message: 'Please enter a valid phone number.' }),
+  companyAddress: z.string().min(5, { message: 'Company address is required.' }),
+  city: z.string().min(2, { message: 'City is required.' }),
+  state: z.string().min(2, { message: 'State or province is required.' }),
+  country: z.string().min(2, { message: 'Country is required.' }),
   companyWebsite: z.string().url({ message: 'Please enter a valid URL.' }).optional().or(z.literal('')),
   companySize: z.string().min(1, { message: 'Please select a company size.' }),
   yourRole: z.string().min(1, { message: 'Please select your role.' }),
@@ -45,7 +51,7 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
     <Card className='max-w-xl mx-auto'>
       <CardHeader>
         <CardTitle>Company Information</CardTitle>
-        <CardDescription>Tell us a bit about your company.</CardDescription>
+        <CardDescription>Tell us a bit more about your company.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -63,6 +69,88 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
                 </FormItem>
               )}
             />
+             <div className="grid grid-cols-2 gap-4">
+               <FormField
+                control={form.control}
+                name="companyEmail"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company Email</FormLabel>
+                    <FormControl>
+                      <Input type="email" placeholder="contact@acme.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="companyPhone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company Phone</FormLabel>
+                    <FormControl>
+                      <Input placeholder="(123) 456-7890" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+             <FormField
+                control={form.control}
+                name="companyAddress"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company Address</FormLabel>
+                    <FormControl>
+                      <Input placeholder="123 Main Street" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                 <FormField
+                  control={form.control}
+                  name="city"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>City</FormLabel>
+                      <FormControl>
+                        <Input placeholder="New York" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                 <FormField
+                  control={form.control}
+                  name="state"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>State / Province</FormLabel>
+                      <FormControl>
+                        <Input placeholder="NY" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                 <FormField
+                  control={form.control}
+                  name="country"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Country</FormLabel>
+                      <FormControl>
+                        <Input placeholder="USA" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
              <FormField
               control={form.control}
               name="companyWebsite"
