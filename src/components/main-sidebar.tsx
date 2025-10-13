@@ -80,7 +80,7 @@ export function MainSidebar() {
           ))}
         </SidebarMenu>
       </SidebarContent>
-      <SidebarFooter className="group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-1">
+      <SidebarFooter className="group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-1 flex-col items-start p-2 gap-2">
         <SidebarMenu>
             <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Settings">
@@ -91,6 +91,9 @@ export function MainSidebar() {
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>
+        <div className="text-xs text-muted-foreground px-2 group-data-[collapsible=icon]:hidden">
+          Powered by Nubenta Technology Limited
+        </div>
       </SidebarFooter>
     </>
   );

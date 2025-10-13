@@ -219,10 +219,10 @@ export default function LandingPage() {
                 From Blueprint to Bottom Line
               </h2>
               <p className="text-muted-foreground text-lg mb-4">
-                Founded by a team of seasoned construction managers and innovative software engineers, BuildTrack Pro was born from a shared frustration: too many projects were losing profitability due to preventable administrative overhead and a lack of real-time financial insight. We knew there had to be a better way.
+                BuildTrack Pro was founded by Nubenta Technology Limited to solve a critical problem in the construction industry: significant financial losses due to untracked expenses and poor budget management.
               </p>
               <p className="text-muted-foreground text-lg">
-                Our mission is to empower constructors with a powerful, yet intuitive, platform that bridges the gap between the job site and the balance sheet. We're committed to providing the tools you need to build more efficiently, control costs with precision, and drive profitability on every project.
+                Our mission is to empower construction companies and managers with a powerful, yet intuitive, platform that bridges the gap between the job site and the balance sheet. We're committed to providing the tools you need to build more efficiently, control costs with precision, and drive profitability on every project.
               </p>
             </div>
             {aboutImage && (
@@ -311,6 +311,7 @@ export default function LandingPage() {
                     <span>BuildTrack Pro</span>
                 </div>
                 <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
+                <p className="text-sm text-accent-foreground/80 mt-2">Powered by Nubenta Technology Limited</p>
             </div>
             <div>
                 <h4 className="font-semibold mb-3">Product</h4>
