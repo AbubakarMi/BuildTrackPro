@@ -92,8 +92,8 @@ export function MainSidebar() {
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>
-        <div className="border-t border-sidebar-border mt-auto group-data-[collapsible=icon]:hidden">
-            <div className="text-center text-xs text-muted-foreground/80 px-2 pt-2">
+        <div className="border-t border-sidebar-border mt-auto pt-2 group-data-[collapsible=icon]:hidden">
+            <div className="text-center text-xs text-muted-foreground/80 px-2">
               <p>&copy; {new Date().getFullYear()} BuildTrack Pro</p>
               <p>Powered by <a href="#" className="hover:text-primary transition-colors font-medium">Nubenta Technology Limited</a></p>
             </div>
