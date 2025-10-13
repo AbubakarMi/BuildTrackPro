@@ -83,6 +83,7 @@ export default function RegisterPage() {
     city: '',
     state: '',
     country: '',
+    currency: 'USD',
     companyWebsite: '',
     companySize: '',
     yourRole: '',

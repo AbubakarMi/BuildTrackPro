@@ -16,6 +16,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { countries, type State } from '@/lib/countries';
+import { currencies } from '@/lib/currencies';
 import React from 'react';
 import { Combobox, ComboboxOption } from '../ui/combobox';
 
@@ -27,6 +28,7 @@ const formSchema = z.object({
   city: z.string().min(2, { message: 'City is required.' }),
   state: z.string().min(1, { message: 'State or province is required.' }),
   country: z.string().min(2, { message: 'Country is required.' }),
+  currency: z.string().min(3, { message: "Please select a default currency."}),
   companyWebsite: z.string().url({ message: 'Please enter a valid URL.' }).optional().or(z.literal('')),
   companySize: z.string().min(1, { message: 'Please select a company size.' }),
   yourRole: z.string().min(1, { message: 'Please select your role.' }),
@@ -52,6 +54,10 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
 
   const countryOptions: ComboboxOption[] = React.useMemo(() => 
     countries.map(c => ({ value: c.code, label: c.name }))
+  , []);
+  
+  const currencyOptions: ComboboxOption[] = React.useMemo(() =>
+    currencies.map(c => ({ value: c.code, label: `${c.code} - ${c.name}` }))
   , []);
 
   React.useEffect(() => {
@@ -190,19 +196,39 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
                   )}
                 />
               </div>
-             <FormField
-              control={form.control}
-              name="companyWebsite"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Company Website (Optional)</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://acmeconstruction.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                 <FormField
+                    control={form.control}
+                    name="currency"
+                    render={({ field }) => (
+                      <FormItem className='flex flex-col'>
+                        <FormLabel>Default Currency</FormLabel>
+                          <Combobox
+                            options={currencyOptions}
+                            value={field.value}
+                            onChange={field.onChange}
+                            placeholder='Select currency...'
+                            searchPlaceholder='Search currency...'
+                            notFoundText='No currency found.'
+                          />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="companyWebsite"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Company Website (Optional)</FormLabel>
+                        <FormControl>
+                          <Input placeholder="https://acmeconstruction.com" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField
                 control={form.control}
