@@ -1,5 +1,5 @@
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Building2 } from 'lucide-react';
+import { HardHat } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -25,7 +25,7 @@ export default function LoginPage() {
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
              <div className="flex items-center justify-center gap-2 font-headline text-3xl font-bold">
-                <Building2 className="h-8 w-8 text-primary" />
+                <HardHat className="h-8 w-8 text-primary" />
                 <h1>BuildTrack Pro</h1>
             </div>
             <p className="text-balance text-muted-foreground">
@@ -54,8 +54,8 @@ export default function LoginPage() {
               </div>
               <Input id="password" type="password" required />
             </div>
-            <Button type="submit" className="w-full">
-              Login
+            <Button type="submit" className="w-full" asChild>
+              <Link href="/dashboard">Login</Link>
             </Button>
             <Button variant="outline" className="w-full">
               Login with Google

@@ -15,11 +15,10 @@ import {
   CircleDollarSign,
   FileText,
   Settings,
-  ChevronLeft,
+  HardHat,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ThemeToggleButton } from './theme-toggle';
 
 const menuItems = [
   {
@@ -52,7 +51,7 @@ export function MainSidebar() {
       <SidebarHeader>
         <div className="flex items-center gap-2">
           <Link href="/dashboard" className="flex items-center gap-2 font-headline text-lg font-semibold">
-            <Building2 className="h-6 w-6 text-primary" />
+            <HardHat className="h-6 w-6 text-primary" />
             <span className="group-data-[collapsible=icon]:hidden">BuildTrack Pro</span>
           </Link>
         </div>

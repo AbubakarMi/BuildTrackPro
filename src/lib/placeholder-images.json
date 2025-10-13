@@ -3,7 +3,7 @@
     {
       "id": "login-background",
       "description": "A modern building under construction, viewed from a low angle against a clear sky.",
-      "imageUrl": "https://picsum.photos/seed/loginbg/1200/1800",
+      "imageUrl": "https://picsum.photos/seed/herobg/1920/1080",
       "imageHint": "construction site"
     },
     {
@@ -35,6 +35,18 @@
       "description": "Image of Suburbia Gardens project site",
       "imageUrl": "https://picsum.photos/seed/site2/600/400",
       "imageHint": "residential construction"
+    },
+    {
+      "id": "project-image-3",
+      "description": "Image of Westside Bridge project",
+      "imageUrl": "https://picsum.photos/seed/site3/600/400",
+      "imageHint": "bridge construction"
+    },
+    {
+      "id": "project-image-4",
+      "description": "Image of a modern office complex",
+      "imageUrl": "https://picsum.photos/seed/site4/600/400",
+      "imageHint": "office building"
     }
   ]
 }
