@@ -127,7 +127,7 @@ export default function LandingPage() {
                   <Link href="/pricing">Get Started For Free</Link>
                 </Button>
                 <Button size="lg" variant="secondary" asChild>
-                    <Link href="#">Request a Demo</Link>
+                    <Link href="/request-demo">Request a Demo</Link>
                 </Button>
               </div>
             </div>
@@ -319,7 +319,7 @@ export default function LandingPage() {
                         <li><Link href="#services" className="hover:text-primary transition-colors">Features</Link></li>
                         <li><Link href="#projects" className="hover:text-primary transition-colors">Use Cases</Link></li>
                         <li><Link href="/pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
-                        <li><Link href="#" className="hover:text-primary transition-colors">Demo</Link></li>
+                        <li><Link href="/request-demo" className="hover:text-primary transition-colors">Demo</Link></li>
                     </ul>
                 </div>
                 <div>
