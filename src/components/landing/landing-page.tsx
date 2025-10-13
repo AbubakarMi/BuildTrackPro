@@ -1,5 +1,6 @@
 
 
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -125,7 +126,7 @@ export default function LandingPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" asChild>
-                  <Link href="/pricing">Start Your Free Trial</Link>
+                  <Link href="/pricing">Get Started For Free</Link>
                 </Button>
                 <Button size="lg" variant="secondary" asChild>
                     <Link href="#">Request a Demo</Link>
@@ -312,8 +313,9 @@ export default function LandingPage() {
                     <HardHat className="w-7 h-7" />
                     <span>BuildTrack Pro</span>
                 </Link>
-                <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved. 
-                  <Link href="#" className="transition-colors hover:text-primary">Powered by Nubenta Technology Limited</Link>
+                <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} A Nubenta Technology Limited Company. All Rights Reserved. </p>
+                <p className="text-sm text-accent-foreground/80">
+                  <Link href="#" className="transition-colors hover:text-primary">Powered by Nubenta</Link>
                 </p>
             </div>
             <div>
