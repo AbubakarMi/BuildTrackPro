@@ -5,15 +5,14 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import { Building, Hammer, Paintbrush, HardHat, Phone, Mail, MapPin } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { JSX, SVGProps } from 'react';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel';
 
 const services = [
   {
@@ -45,6 +44,7 @@ const projects = [
     name: 'Modern Office Complex',
     category: 'Commercial',
   },
+  { id: 'project-image-1', name: 'Downtown Tower 2', category: 'Commercial' },
 ];
 
 export default function LandingPage() {
@@ -161,43 +161,54 @@ export default function LandingPage() {
         </section>
 
         <section id="projects" className="py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl md:text-4xl font-headline font-bold">
-                    Built for Any Project
-                </h2>
-                <p className="text-lg text-muted-foreground mt-4">
-                    From residential homes to large-scale infrastructure, BuildTrack Pro adapts to your project's unique needs.
-                </p>
+            <div className="container mx-auto px-4">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                    <h2 className="text-3xl md:text-4xl font-headline font-bold">
+                        Built for Any Project
+                    </h2>
+                    <p className="text-lg text-muted-foreground mt-4">
+                        From residential homes to large-scale infrastructure, BuildTrack Pro adapts to your project's unique needs.
+                    </p>
+                </div>
+                <Carousel
+                    opts={{
+                        align: "start",
+                        loop: true,
+                    }}
+                    className="w-full"
+                >
+                    <CarouselContent>
+                        {projectImages.map((img, index) => (
+                            img && (
+                                <CarouselItem key={img.id + index} className="md:basis-1/2 lg:basis-1/3">
+                                    <Card className="overflow-hidden group h-full">
+                                        <div className="relative h-80">
+                                            <Image
+                                                src={img.imageUrl}
+                                                alt={projects[index].name}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                                data-ai-hint={img.imageHint}
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                                        </div>
+                                        <CardContent className="p-4 absolute bottom-0 w-full">
+                                            <h3 className="text-xl font-bold text-primary-foreground">
+                                                {projects[index].name}
+                                            </h3>
+                                            <p className="text-md text-primary-foreground/80">
+                                                {projects[index].category}
+                                            </p>
+                                        </CardContent>
+                                    </Card>
+                                </CarouselItem>
+                            )
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
+                    <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
+                </Carousel>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {projectImages.map(
-                (img, index) =>
-                  img && (
-                    <Card key={img.id} className="overflow-hidden group">
-                      <div className="relative h-64">
-                        <Image
-                          src={img.imageUrl}
-                          alt={projects[index].name}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          data-ai-hint={img.imageHint}
-                        />
-                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                      </div>
-                      <CardContent className="p-4 absolute bottom-0">
-                        <h3 className="text-lg font-bold text-primary-foreground">
-                          {projects[index].name}
-                        </h3>
-                        <p className="text-sm text-primary-foreground/80">
-                          {projects[index].category}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  )
-              )}
-            </div>
-          </div>
         </section>
 
         <section id="about" className="py-16 md:py-24 bg-secondary">
@@ -338,26 +349,5 @@ export default function LandingPage() {
         </div>
       </footer>
     </div>
-  );
-}
-
-function ChevronRightIcon(
-  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
-) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m9 18 6-6-6-6" />
-    </svg>
   );
 }
