@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "login-background",
-      "description": "A professional architectural blueprint with drafting tools, representing precision and planning in construction.",
-      "imageUrl": "https://picsum.photos/seed/blueprint-plan/1920/1080",
-      "imageHint": "architectural blueprint"
+      "description": "A construction manager reviewing project plans on a tablet at a modern construction site, representing technology and project management.",
+      "imageUrl": "https://picsum.photos/seed/site-meeting/1920/1080",
+      "imageHint": "construction management"
     },
     {
       "id": "highway-animated-bg",
