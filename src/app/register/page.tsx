@@ -1,30 +1,59 @@
+'use client';
 
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { HardHat } from 'lucide-react';
+import { useState } from 'react';
 import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { HardHat, Building, User, CreditCard } from 'lucide-react';
+import Step1_UserAccount from '@/components/register/step1-user-account';
+import Step2_CompanyDetails from '@/components/register/step2-company-details';
+import Step3_PlanSelection from '@/components/register/step3-plan-selection';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+const steps = [
+  { id: 1, name: 'Create Account', icon: <User className="h-5 w-5" /> },
+  { id: 2, name: 'Company Details', icon: <Building className="h-5 w-5" /> },
+  { id: 3, name: 'Select Plan', icon: <CreditCard className="h-5 w-5" /> },
+];
 
 export default function RegisterPage() {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    password: '',
+    companyName: '',
+    companyWebsite: '',
+    companySize: '',
+    yourRole: '',
+    plan: 'basic',
+  });
+
   const bgImage = PlaceHolderImages.find(
     (img) => img.id === 'login-background'
   );
 
+  const handleNext = (data: any) => {
+    setFormData((prev) => ({ ...prev, ...data }));
+    if (currentStep < 3) {
+      setCurrentStep((prev) => prev + 1);
+    } else {
+      // Handle final submission
+      console.log('Final Form Data:', { ...formData, ...data });
+      // Here you would typically redirect to the dashboard or a confirmation page
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentStep > 1) {
+      setCurrentStep((prev) => prev - 1);
+    }
+  };
+
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
       <div className="flex min-h-screen items-center justify-center py-12">
-        <div className="mx-auto grid w-[450px] gap-6 p-4">
+        <div className="mx-auto grid w-[480px] max-w-full gap-6 p-4">
           <div className="grid gap-2 text-center">
             <div className="flex items-center justify-center gap-2 font-headline text-3xl font-bold">
               <HardHat className="h-8 w-8 text-primary" />
@@ -34,80 +63,36 @@ export default function RegisterPage() {
               Create your company account to start managing your projects.
             </p>
           </div>
-          <Card>
-            <CardHeader>
-                <CardTitle>Company &amp; Admin Details</CardTitle>
-                <CardDescription>The user who creates the company account will be the administrator.</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <div className="grid gap-4">
-                    <div className="grid gap-2">
-                      <Label htmlFor="company-name">Company Name</Label>
-                      <Input id="company-name" placeholder="Acme Construction Inc." required />
-                    </div>
-                     <div className="grid gap-2">
-                      <Label htmlFor="company-website">Company Website (Optional)</Label>
-                      <Input id="company-website" placeholder="https://acmeconstruction.com" />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="grid gap-2">
-                            <Label htmlFor="company-size">Company Size</Label>
-                            <Select>
-                                <SelectTrigger id="company-size">
-                                    <SelectValue placeholder="Select size" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="1-10">1-10 employees</SelectItem>
-                                    <SelectItem value="11-50">11-50 employees</SelectItem>
-                                    <SelectItem value="51-200">51-200 employees</SelectItem>
-                                    <SelectItem value="201+">201+ employees</SelectItem>
-                                </SelectContent>
-                            </Select>
+
+          <div className="w-full">
+            <div className="mb-8 flex items-center justify-between">
+                {steps.map((step, index) => (
+                    <div key={step.id} className="flex items-center">
+                        <div className={`flex h-10 w-10 items-center justify-center rounded-full ${currentStep >= step.id ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
+                            {step.icon}
                         </div>
-                        <div className="grid gap-2">
-                            <Label htmlFor="your-role">Your Role</Label>
-                             <Select>
-                                <SelectTrigger id="your-role">
-                                    <SelectValue placeholder="Select role" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="owner">Owner / Founder</SelectItem>
-                                    <SelectItem value="pm">Project Manager</SelectItem>
-                                    <SelectItem value="admin">Administrator</SelectItem>
-                                     <SelectItem value="other">Other</SelectItem>
-                                </SelectContent>
-                            </Select>
+                        <div className={`ml-3 hidden sm:block ${currentStep >= step.id ? 'text-foreground' : 'text-muted-foreground'}`}>
+                            <div className="text-sm font-medium">{step.name}</div>
                         </div>
+                        {index < steps.length - 1 && (
+                            <div className={`flex-auto border-t-2 transition-colors duration-500 ease-in-out mx-4 ${currentStep > index + 1 ? 'border-primary' : 'border-muted'}`}></div>
+                        )}
                     </div>
-                    <hr className="my-2"/>
-                    <div className="grid gap-2">
-                      <Label htmlFor="full-name">Your Full Name</Label>
-                      <Input id="full-name" placeholder="John Doe" required />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="m@example.com"
-                        required
-                      />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label htmlFor="password">Password</Label>
-                      <Input id="password" type="password" required />
-                    </div>
-                    <Button type="submit" className="w-full" asChild>
-                      <Link href="/dashboard">Create Account</Link>
-                    </Button>
-                </div>
-            </CardContent>
-          </Card>
-          <div className="mt-4 text-center text-sm">
-            Already have an account?{' '}
-            <Link href="/login" className="underline">
-              Log in
-            </Link>
+                ))}
+            </div>
+
+            <div className="min-h-[400px]">
+              {currentStep === 1 && <Step1_UserAccount onNext={handleNext} initialData={formData} />}
+              {currentStep === 2 && <Step2_CompanyDetails onNext={handleNext} onPrev={handlePrev} initialData={formData} />}
+              {currentStep === 3 && <Step3_PlanSelection onNext={handleNext} onPrev={handlePrev} initialData={formData} />}
+            </div>
+
+             <div className="mt-4 text-center text-sm">
+                Already have an account?{' '}
+                <Link href="/login" className="underline">
+                  Log in
+                </Link>
+            </div>
           </div>
         </div>
       </div>
