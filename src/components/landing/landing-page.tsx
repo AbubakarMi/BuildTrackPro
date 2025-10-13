@@ -311,7 +311,6 @@ export default function LandingPage() {
                     <HardHat className="w-7 h-7" />
                     <span>BuildTrack Pro</span>
                 </Link>
-                <p className="text-xs text-accent-foreground/80">Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a></p>
             </div>
             <div>
                 <h4 className="font-semibold mb-3">Product</h4>
@@ -340,10 +339,9 @@ export default function LandingPage() {
         </div>
         <div className="container mx-auto px-4 mt-8 border-t border-accent-foreground/20 pt-8 text-center text-sm text-accent-foreground/80">
             <p>&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
+            <p className="text-xs">Powered by <a href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</a></p>
         </div>
       </footer>
     </div>
   );
 }
-
-    

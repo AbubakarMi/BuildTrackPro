@@ -81,7 +81,7 @@ export function MainSidebar() {
           ))}
         </SidebarMenu>
       </SidebarContent>
-      <SidebarFooter className="group-data-[collapsible=icon]:justify-center flex-col items-start p-2 gap-2">
+      <SidebarFooter className="flex-col items-stretch gap-2 p-2">
         <SidebarMenu>
             <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Settings">
@@ -92,12 +92,11 @@ export function MainSidebar() {
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>
-        <div className="w-full text-center text-xs text-muted-foreground/80 px-2 group-data-[collapsible=icon]:hidden">
+        <div className="text-center text-xs text-muted-foreground/80 px-2 group-data-[collapsible=icon]:hidden">
+          <p>&copy; {new Date().getFullYear()} BuildTrack Pro</p>
           <p>Powered by <a href="#" className="hover:text-primary transition-colors font-medium">Nubenta Technology Limited</a></p>
         </div>
       </SidebarFooter>
     </>
   );
 }
-
-    
