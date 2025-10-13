@@ -124,7 +124,7 @@ export default function LandingPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" asChild>
-                  <Link href="/login">Sign Up for Free</Link>
+                  <Link href="/pricing">Start Your Free Trial</Link>
                 </Button>
                 <Button size="lg" variant="secondary" asChild>
                     <Link href="#">Request a Demo</Link>
@@ -311,7 +311,9 @@ export default function LandingPage() {
                     <HardHat className="w-7 h-7" />
                     <span>BuildTrack Pro</span>
                 </Link>
-                <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved.</p>
+                <p className="text-sm text-accent-foreground/80">&copy; {new Date().getFullYear()} BuildTrack Pro. All Rights Reserved. 
+                  <Link href="#" className="transition-colors hover:text-primary">Powered by Nubenta Technology Limited</Link>
+                </p>
             </div>
             <div>
                 <h4 className="font-semibold mb-3">Product</h4>
@@ -337,9 +339,6 @@ export default function LandingPage() {
                     <li><Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>
                 </ul>
             </div>
-        </div>
-        <div className="container mx-auto px-4 mt-8 pt-8 border-t border-accent-foreground/10 text-center text-sm text-accent-foreground/80">
-          <p>Powered by <Link href="#" className="hover:text-primary transition-colors">Nubenta Technology Limited</Link></p>
         </div>
       </footer>
     </div>
