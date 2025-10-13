@@ -114,7 +114,7 @@ export default function RegisterPage() {
           </div>
 
           <div className="w-full">
-            <div className="mb-8 flex items-center justify-between max-w-2xl mx-auto">
+            <div className="mb-8 flex items-center justify-center max-w-md mx-auto sm:max-w-2xl">
                 {steps.map((step, index) => (
                     <React.Fragment key={step.id}>
                         <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:items-start sm:text-left">
