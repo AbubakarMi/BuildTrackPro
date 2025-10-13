@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "login-background",
-      "description": "A modern building under construction, viewed from a low angle against a clear sky.",
-      "imageUrl": "https://picsum.photos/seed/construction-hero/1920/1080",
-      "imageHint": "modern architecture"
+      "description": "A professional architectural blueprint with drafting tools, representing precision and planning in construction.",
+      "imageUrl": "https://picsum.photos/seed/blueprint-plan/1920/1080",
+      "imageHint": "architectural blueprint"
     },
     {
       "id": "highway-animated-bg",
@@ -14,8 +14,8 @@
     },
     {
       "id": "user-avatar-1",
-      "description": "Avatar for a user named Sarah Chen",
-      "imageUrl": "https://picsum.photos/seed/architect/100/100",
+      "description": "Avatar for a user, showing a portrait of an architect or construction manager.",
+      "imageUrl": "https://picsum.photos/seed/pro-architect/100/100",
       "imageHint": "female architect"
     },
     {
@@ -32,26 +32,26 @@
     },
     {
       "id": "project-image-1",
-      "description": "Image of Downtown Tower project site",
-      "imageUrl": "https://picsum.photos/seed/downtown-construction/600/400",
+      "description": "Image of a modern skyscraper under construction.",
+      "imageUrl": "https://picsum.photos/seed/skyscraper-build/600/400",
       "imageHint": "city building"
     },
     {
       "id": "project-image-2",
-      "description": "Image of Suburbia Gardens project site",
-      "imageUrl": "https://picsum.photos/seed/suburb-house/600/400",
+      "description": "A modern residential house during the framing stage of construction.",
+      "imageUrl": "https://picsum.photos/seed/house-frame/600/400",
       "imageHint": "modern house"
     },
     {
       "id": "project-image-3",
-      "description": "Image of Westside Bridge project",
-      "imageUrl": "https://picsum.photos/seed/bridge-build/600/400",
+      "description": "A large infrastructure bridge under construction at sunset.",
+      "imageUrl": "https://picsum.photos/seed/bridge-sunset/600/400",
       "imageHint": "bridge architecture"
     },
     {
       "id": "project-image-4",
-      "description": "A team of construction professionals reviewing blueprints.",
-      "imageUrl": "https://picsum.photos/seed/team-blueprint/600/400",
+      "description": "A team of construction managers and architects reviewing plans on a tablet at a job site.",
+      "imageUrl": "https://picsum.photos/seed/site-meeting/600/400",
       "imageHint": "construction team"
     }
   ]
