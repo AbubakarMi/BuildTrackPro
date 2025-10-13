@@ -1,8 +1,8 @@
 
 'use client';
 
-import React, { useState } from 'react';
-import { HardHat, Building, User, CreditCard } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { HardHat, Building, User, CreditCard, ArrowRight } from 'lucide-react';
 import Step1_UserAccount from '@/components/register/step1-user-account';
 import Step2_CompanyDetails from '@/components/register/step2-company-details';
 import Step3_PlanSelection from '@/components/register/step3-plan-selection';
@@ -13,6 +13,61 @@ const steps = [
   { id: 2, name: 'Company Details', icon: <Building className="h-5 w-5" /> },
   { id: 3, name: 'Select Plan', icon: <CreditCard className="h-5 w-5" /> },
 ];
+
+const solutionSteps = [
+    {
+        title: "Track Every Expense",
+        description: "From materials to labor, log every dollar spent in real-time."
+    },
+    {
+        title: "Manage Materials Efficiently",
+        description: "Monitor inventory and usage to prevent waste and budget overruns."
+    },
+    {
+        title: "Control Labor Costs",
+        description: "Audit payment logs and manage overtime with AI-powered insights."
+    }
+]
+
+function SolutionShowcase() {
+    const [current, setCurrent] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrent(prev => (prev + 1) % solutionSteps.length);
+        }, 5000); // Change step every 5 seconds
+        return () => clearInterval(timer);
+    }, []);
+
+    return (
+        <div className="max-w-2xl text-left">
+            <h2 className="text-4xl md:text-5xl font-bold font-headline mb-8">
+                Your Path to Project Profitability
+            </h2>
+            <div className="flex flex-col gap-4">
+                {solutionSteps.map((step, index) => (
+                    <div key={index} className={`transition-all duration-700 ${current === index ? 'opacity-100' : 'opacity-40'}`}>
+                        <div className="flex items-center gap-4">
+                            <div className={`flex items-center justify-center h-12 w-12 rounded-full border-2 ${current === index ? 'border-primary bg-primary/20' : 'border-white/50'}`}>
+                                <span className="text-xl font-bold">{index + 1}</span>
+                            </div>
+                            <div>
+                                <h3 className={`text-xl font-semibold transition-colors duration-500 ${current === index ? 'text-primary' : 'text-white'}`}>{step.title}</h3>
+                                <p className="text-white/80">{step.description}</p>
+                            </div>
+                        </div>
+                        {index < solutionSteps.length - 1 && (
+                            <div className="h-10 ml-6 flex items-center">
+                                <ArrowRight className={`w-6 h-6 transition-all duration-700 ${current === index ? 'text-primary scale-110' : 'text-white/50'}`} />
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}
+
 
 export default function RegisterPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -62,11 +117,11 @@ export default function RegisterPage() {
             <div className="mb-8 flex items-center justify-between max-w-2xl mx-auto">
                 {steps.map((step, index) => (
                     <React.Fragment key={step.id}>
-                        <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left">
-                            <div className={`flex h-10 w-10 items-center justify-center rounded-full ${currentStep >= step.id ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
+                        <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:items-start sm:text-left">
+                            <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${currentStep >= step.id ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
                                 {step.icon}
                             </div>
-                            <div className={`${currentStep >= step.id ? 'text-foreground' : 'text-muted-foreground'}`}>
+                            <div className={`hidden sm:block ${currentStep >= step.id ? 'text-foreground' : 'text-muted-foreground'}`}>
                                 <div className="text-sm font-medium">{step.name}</div>
                             </div>
                         </div>
@@ -92,7 +147,7 @@ export default function RegisterPage() {
           </div>
         </div>
       </div>
-      <div className="hidden bg-muted lg:block relative overflow-hidden">
+      <div className="hidden bg-muted lg:flex items-center justify-center relative overflow-hidden p-10">
         <video
             autoPlay
             loop
@@ -103,15 +158,9 @@ export default function RegisterPage() {
         >
             Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-black/50 z-10 flex flex-col justify-end p-10 text-white">
-            <div className="max-w-lg">
-                <h2 className="text-4xl font-bold font-headline mb-4">
-                    From Blueprint to Balance Sheet, Track Every Dollar.
-                </h2>
-                <p className="text-lg text-white/80">
-                    Stop guessing, start building. Master your material and labor expenses with real-time data for real-world projects.
-                </p>
-            </div>
+        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="z-20 text-white w-full">
+            <SolutionShowcase />
         </div>
       </div>
     </div>
