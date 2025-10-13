@@ -47,7 +47,7 @@ export default function RegisterPage() {
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
       <div className="flex min-h-screen items-center justify-center p-4 py-12 sm:p-6 md:p-8">
-        <div className="mx-auto grid w-full max-w-4xl gap-6">
+        <div className="mx-auto grid w-full max-w-2xl gap-6">
           <div className="grid gap-2 text-center">
             <div className="flex items-center justify-center gap-2 font-headline text-3xl font-bold">
               <HardHat className="h-8 w-8 text-primary" />
@@ -62,16 +62,16 @@ export default function RegisterPage() {
             <div className="mb-8 flex items-center justify-between max-w-2xl mx-auto">
                 {steps.map((step, index) => (
                     <React.Fragment key={step.id}>
-                        <div className="flex flex-col sm:flex-row items-center gap-2">
+                        <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left">
                             <div className={`flex h-10 w-10 items-center justify-center rounded-full ${currentStep >= step.id ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
                                 {step.icon}
                             </div>
-                            <div className={`text-center sm:text-left ${currentStep >= step.id ? 'text-foreground' : 'text-muted-foreground'}`}>
+                            <div className={`${currentStep >= step.id ? 'text-foreground' : 'text-muted-foreground'}`}>
                                 <div className="text-sm font-medium">{step.name}</div>
                             </div>
                         </div>
                         {index < steps.length - 1 && (
-                            <div className={`flex-auto border-t-2 transition-colors duration-500 ease-in-out mx-2 sm:mx-4 ${currentStep > index + 1 ? 'border-primary' : 'border-muted'}`}></div>
+                            <div className={`flex-auto border-t-2 transition-colors duration-500 ease-in-out mx-2 ${currentStep > index + 1 ? 'border-primary' : 'border-muted'}`}></div>
                         )}
                     </React.Fragment>
                 ))}
@@ -106,10 +106,10 @@ export default function RegisterPage() {
         <div className="absolute inset-0 bg-black/50 z-10 flex flex-col justify-end p-10 text-white">
             <div className="max-w-lg">
                 <h2 className="text-4xl font-bold font-headline mb-4">
-                    The road to successful projects is paved with good data.
+                    From Blueprint to Balance Sheet, Track Every Dollar.
                 </h2>
                 <p className="text-lg text-white/80">
-                    Your journey to more profitable, efficient, and well-managed construction projects starts now.
+                    Stop guessing, start building. Master your material and labor expenses with real-time data for real-world projects.
                 </p>
             </div>
         </div>
