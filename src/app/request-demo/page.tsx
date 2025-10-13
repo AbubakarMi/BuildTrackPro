@@ -14,6 +14,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import Image from 'next/image';
 
 const solutionSteps = [
     {
@@ -73,6 +75,7 @@ function SolutionShowcase() {
 
 
 export default function RequestDemoPage() {
+    const bgImage = PlaceHolderImages.find(img => img.id === 'login-background');
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
       <div className="flex min-h-screen items-center justify-center p-4 py-12 sm:p-6 md:p-8">
@@ -146,16 +149,16 @@ export default function RequestDemoPage() {
         </div>
       </div>
       <div className="hidden bg-muted lg:flex items-center justify-center relative overflow-hidden p-10">
-        <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2 z-0 dark:brightness-[0.4]"
-            src="https://cdn.coverr.co/videos/coverr-a-highway-in-the-city-4313/1080p.mp4"
-        >
-            Your browser does not support the video tag.
-        </video>
+        {bgImage && (
+            <Image
+                src={bgImage.imageUrl}
+                alt={bgImage.description}
+                fill
+                className="absolute inset-0 w-full h-full object-cover z-0 dark:brightness-[0.4] animate-zoom-in"
+                data-ai-hint={bgImage.imageHint}
+                priority
+            />
+        )}
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="z-20 text-white w-full">
             <SolutionShowcase />
