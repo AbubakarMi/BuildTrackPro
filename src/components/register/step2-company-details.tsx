@@ -15,6 +15,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { countries, type State } from '@/lib/countries';
+import React from 'react';
 
 const formSchema = z.object({
   companyName: z.string().min(2, { message: 'Company name is required.' }),
@@ -22,7 +24,7 @@ const formSchema = z.object({
   companyPhone: z.string().min(5, { message: 'Please enter a valid phone number.' }),
   companyAddress: z.string().min(5, { message: 'Company address is required.' }),
   city: z.string().min(2, { message: 'City is required.' }),
-  state: z.string().min(2, { message: 'State or province is required.' }),
+  state: z.string().min(1, { message: 'State or province is required.' }),
   country: z.string().min(2, { message: 'Country is required.' }),
   companyWebsite: z.string().url({ message: 'Please enter a valid URL.' }).optional().or(z.literal('')),
   companySize: z.string().min(1, { message: 'Please select a company size.' }),
@@ -43,12 +45,30 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
     defaultValues: initialData,
   });
 
+  const [states, setStates] = React.useState<State[]>([]);
+  
+  const selectedCountry = form.watch('country');
+
+  React.useEffect(() => {
+    if (selectedCountry) {
+      const countryData = countries.find(c => c.code === selectedCountry);
+      setStates(countryData?.states || []);
+      // Reset state if country changes and current state is not in the new list of states
+      if(countryData && !countryData.states.some(s => s.code === form.getValues('state'))){
+        form.setValue('state', '');
+      }
+    } else {
+      setStates([]);
+    }
+  }, [selectedCountry, form]);
+
+
   const onSubmit = (data: Step2FormValues) => {
     onNext(data);
   };
 
   return (
-    <Card className='max-w-xl mx-auto'>
+    <Card className='max-w-2xl mx-auto'>
       <CardHeader>
         <CardTitle>Company Information</CardTitle>
         <CardDescription>Tell us a bit more about your company.</CardDescription>
@@ -69,7 +89,7 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
                 </FormItem>
               )}
             />
-             <div className="grid grid-cols-2 gap-4">
+             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                <FormField
                 control={form.control}
                 name="companyEmail"
@@ -126,26 +146,44 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
                 />
                  <FormField
                   control={form.control}
-                  name="state"
+                  name="country"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>State / Province</FormLabel>
-                      <FormControl>
-                        <Input placeholder="NY" {...field} />
-                      </FormControl>
+                      <FormLabel>Country</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a country" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {countries.map(country => (
+                            <SelectItem key={country.code} value={country.code}>{country.name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
                  <FormField
                   control={form.control}
-                  name="country"
+                  name="state"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Country</FormLabel>
-                      <FormControl>
-                        <Input placeholder="USA" {...field} />
-                      </FormControl>
+                      <FormLabel>State / Province</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value} disabled={!states.length}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a state" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {states.map(state => (
+                            <SelectItem key={state.code} value={state.code}>{state.name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -164,7 +202,7 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
                 </FormItem>
               )}
             />
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField
                 control={form.control}
                 name="companySize"
@@ -212,7 +250,7 @@ export default function Step2_CompanyDetails({ onNext, onPrev, initialData }: St
                 )}
                 />
             </div>
-            <div className="flex justify-between gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row justify-between gap-4 pt-4">
               <Button type="button" variant="outline" onClick={onPrev} className="w-full">
                 Previous
               </Button>
