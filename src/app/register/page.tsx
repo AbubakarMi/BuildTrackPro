@@ -103,7 +103,16 @@ export default function RegisterPage() {
         >
             Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-black/20 z-10"></div>
+        <div className="absolute inset-0 bg-black/50 z-10 flex flex-col justify-end p-10 text-white">
+            <div className="max-w-lg">
+                <h2 className="text-4xl font-bold font-headline mb-4">
+                    The road to successful projects is paved with good data.
+                </h2>
+                <p className="text-lg text-white/80">
+                    Your journey to more profitable, efficient, and well-managed construction projects starts now.
+                </p>
+            </div>
+        </div>
       </div>
     </div>
   );
