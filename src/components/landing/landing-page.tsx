@@ -19,9 +19,10 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
 import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 const services = [
   {
@@ -76,6 +77,15 @@ export default function LandingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -97,10 +107,16 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-20 px-4 md:px-6 bg-background/80 backdrop-blur-sm">
+      <header className={cn(
+        "fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-20 px-4 transition-all duration-300 md:px-6",
+        isScrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
+      )}>
         <Link
           href="#"
-          className="flex items-center gap-2 font-headline text-2xl font-bold"
+          className={cn(
+            "flex items-center gap-2 font-headline text-2xl font-bold transition-colors",
+            isScrolled ? "text-foreground" : "text-primary-foreground drop-shadow-sm"
+          )}
         >
           <HardHat className="w-8 h-8 text-primary" />
           <span>BuildTrack Pro</span>
@@ -108,28 +124,43 @@ export default function LandingPage() {
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           <Link
             href="#services"
-            className="hover:text-primary transition-colors"
+            className={cn(
+                "transition-colors hover:text-primary",
+                isScrolled ? "text-muted-foreground" : "text-primary-foreground/80"
+            )}
           >
             Features
           </Link>
           <Link
             href="#projects"
-            className="hover:text-primary transition-colors"
+            className={cn(
+                "transition-colors hover:text-primary",
+                isScrolled ? "text-muted-foreground" : "text-primary-foreground/80"
+            )}
           >
             Use Cases
           </Link>
-          <Link href="#about" className="hover:text-primary transition-colors">
+          <Link 
+             href="#about"
+             className={cn(
+                "transition-colors hover:text-primary",
+                isScrolled ? "text-muted-foreground" : "text-primary-foreground/80"
+            )}
+            >
             About
           </Link>
           <Link
             href="#contact"
-            className="hover:text-primary transition-colors"
+            className={cn(
+                "transition-colors hover:text-primary",
+                isScrolled ? "text-muted-foreground" : "text-primary-foreground/80"
+            )}
           >
             Contact
           </Link>
         </nav>
         <div className='flex items-center gap-2'>
-          <Button variant="ghost" asChild>
+          <Button variant="ghost" asChild className={cn(!isScrolled && "text-primary-foreground hover:bg-white/10 hover:text-white")}>
             <Link href="/login">Log In</Link>
           </Button>
           <Button asChild>
